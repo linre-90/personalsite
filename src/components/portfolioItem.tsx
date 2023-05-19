@@ -1,11 +1,11 @@
 import React, { ReactElement } from "react";
 import { v4 as uuidv4 } from "uuid";
+import VideoComponent, { VideoComponentProps } from "./videoComponent";
 
-interface PortfolioItemProps {
+interface PortfolioItemProps extends VideoComponentProps {
   headline: string;
   description: string;
   usedtech: string[];
-  video?: JSX.Element;
   imageCollection?: JSX.Element[];
   link?: string;
   downloadLink?: string;
@@ -29,7 +29,13 @@ const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
           Lataa.
         </a>
       )}
-      {item.video !== undefined && <>{item.video}</>}
+      {item.videoURL !== undefined && (
+        <VideoComponent
+          videoURL={item.videoURL}
+          videoCookiesOk={item.videoCookiesOk}
+          acceptFunction={item.acceptFunction}
+        />
+      )}
       <div className="image-container">
         {item.imageCollection !== undefined &&
           item.imageCollection.map((image) => (

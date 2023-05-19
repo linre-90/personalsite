@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import Headline from "./components/headline";
 import Nav from "./components/nav";
 import BacktoTopButton from "./components/backToTop";
 import PortfolioItem from "./components/portfolioItem";
+import VideoComponent from "./components/videoComponent";
 // Image imports
 import catsopinionblog from "./images/catsopinion-blog.webp";
 import catsopinionthumb from "./images/catsopinion-thumbnail.webp";
@@ -26,6 +27,9 @@ function App() {
   const infoRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const [videoCookie, setVideoCookie] = useState<boolean>(false);
+
+  const acceptGoogleCookies = (): void => setVideoCookie(true);
 
   return (
     <div className="container">
@@ -72,17 +76,17 @@ function App() {
             valoille suosittelen kelaamaan 50 sekunnin kohdalle.
           </i>
         </p>
-        <div className="videoFrame">
-          <iframe
-            src="https://www.youtube.com/embed/1d8ALlXSVBY"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          ></iframe>
-        </div>
+        <VideoComponent
+          videoURL="https://www.youtube-nocookie.com/embed/1d8ALlXSVBY"
+          videoCookiesOk={videoCookie}
+          acceptFunction={acceptGoogleCookies}
+        />
+
         <hr></hr>
         <div id="portfolio" ref={portfolioRef}></div>
         <h2>Portfolio</h2>
         <PortfolioItem
+          key={"a1"}
           headline="Cats Opinion"
           description="Blogi, jonka aiheena olivat kissat ja niiden salamyhkäinen elämä, oli saatavilla sekä englanniksi että suomeksi, mutta päätimme lopettaa bloggaamisen, koska se vei liikaa aikaa muilta projekteilta."
           usedtech={["Nuxt.js", "Heroku", "Firestore", "AWS"]}
@@ -98,6 +102,7 @@ function App() {
           ]}
         />
         <PortfolioItem
+          key={"a2"}
           headline="Cat Quiz"
           description="Kysele ja vastaa -peli, joka sai inspiraationsa kissoista, oli täydentävä osa Cats Opinion -blogia tarjoten interaktiivista sisältöä ja viihdykettä."
           usedtech={["React", "Firebase", "Python"]}
@@ -115,6 +120,7 @@ function App() {
           link="https://catquiz-843f1.web.app/"
         />
         <PortfolioItem
+          key={"a3"}
           headline="Cat vision"
           description="Unitylla toteutettu web-selainpeli, joka havainnollistaa ihmisen ja kissan näkökyvyn eroja. Se oli osa Cats Opinion -blogin interaktiivista sisältöä."
           usedtech={["Unity", "Firebase"]}
@@ -128,6 +134,7 @@ function App() {
           link="https://catvision-68afa.web.app/"
         />
         <PortfolioItem
+          key={"a4"}
           headline="Footkin's halloween revolution"
           description="Teimme Unitylla yksinkertaisen Halloween-teemaisen pelin. Osallistuin neljän muun henkilön kanssa nelipäiväiseen pelijamitapahtumaan."
           usedtech={["Unity", "Universal render pipeline", "Gamejam"]}
@@ -136,19 +143,12 @@ function App() {
             <img src={footkinLight} alt="Kuva pelistä" />,
           ]}
           downloadLink="/downloads/FootkinsHalloweenRevolution.zip"
-          video={
-            <div className="videoFrame">
-              <iframe
-                src="https://www.youtube.com/embed/AZPaT0EHMCY"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          }
+          videoURL="https://www.youtube-nocookie.com/embed/AZPaT0EHMCY"
+          videoCookiesOk={videoCookie}
+          acceptFunction={acceptGoogleCookies}
         />
         <PortfolioItem
+          key={"a5"}
           headline="Virtuaalikirjasto"
           description="Teimme koulussa työssäoppimisjakson aikana paikalliselle kirjastolle pelin. Pelissä pelaaja suorittaa possun antamia tehtäviä ja samalla tutustuu kirjaston tarjontaan. Lisäsimme peliin myös toimivia tietokoneita, joilla voi pelata minipelejä."
           usedtech={["Unity"]}
@@ -160,6 +160,7 @@ function App() {
           ]}
         />
         <PortfolioItem
+          key={"a6"}
           headline="Unity raytracing"
           description="Tehtävänä oli esitellä joko Universal Render Pipeline (URP) -renderöintiä tai High Definition Render Pipeline (HDRP) -renderöintiä. Päätin tehdä HDRP:n avulla linnamaisen kentän, joka hyödyntää Nvidian ray tracing -tekniikkaa ja DLSS-tekniikoita."
           usedtech={["Unity", "HDRP"]}
@@ -168,17 +169,9 @@ function App() {
             <img src={rayfireplace} alt="Kuva pelistä" />,
             <img src={rayhall} alt="Kuva pelistä" />,
           ]}
-          video={
-            <div className="videoFrame">
-              <iframe
-                src="https://www.youtube.com/embed/iFBjlztOsMU"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          }
+          videoURL="https://www.youtube-nocookie.com/embed/iFBjlztOsMU"
+          videoCookiesOk={videoCookie}
+          acceptFunction={acceptGoogleCookies}
         />
         <hr></hr>
         <div id="contact" ref={contactRef}></div>
