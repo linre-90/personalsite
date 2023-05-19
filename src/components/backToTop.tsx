@@ -1,12 +1,12 @@
-import React, { ReactElement, useRef } from "react";
+import React, { ReactElement } from "react";
 
 const BacktoTopButton = (): ReactElement => {
-  const backtotopTriggerRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <button
         className="menu-button back-to-top-button"
         onClick={() => window.scrollTo({ behavior: "smooth", left: 0, top: 0 })}
+        aria-label="Palaa takaisin ylös"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

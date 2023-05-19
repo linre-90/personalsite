@@ -131,6 +131,7 @@ const Nav = (props: { items: NavpointProps[] }): ReactElement => {
         className="menu-button"
         type="button"
         onClick={() => setActive(!active)}
+        aria-label="Avaa navigointi valikko"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
