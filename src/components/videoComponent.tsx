@@ -39,7 +39,7 @@ const VideoComponent = ({
           <li>Ostokäyttäytyminen</li>
           <li>Ihmiset joiden kanssa olet yhteydessä tai jaat sisältöä</li>
           <li>Käyttäytymistä kolmanneosapuolen sivuilla ja applikaatioissa</li>
-          <li>Chromen selaushistoria(sisäänkirjautuneilla)</li>
+          <li>Chromen selaushistoria (sisäänkirjautuneilla)</li>
           <li>Laitteen GPS tietoja</li>
           <li>Ip osoite</li>
           <li>Aktiviteetit Googlen palveluissa (esimerkiksi haut)</li>
