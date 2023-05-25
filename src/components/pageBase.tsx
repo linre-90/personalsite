@@ -1,16 +1,7 @@
-import React, { ReactElement, Children, ReactFragment } from "react";
+import React, { ReactElement } from "react";
 import BacktoTopButton from "./backToTop";
 import Nav from "./nav";
-
-interface PageBaseProps {
-  children?:
-    | typeof Children
-    | (typeof Children)[]
-    | ReactElement
-    | ReactElement[]
-    | ReactFragment
-    | undefined;
-}
+import { PageBaseProps } from "../types";
 
 const PageBase = ({ children }: PageBaseProps): ReactElement => {
   return (

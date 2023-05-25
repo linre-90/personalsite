@@ -1,10 +1,5 @@
 import React, { ReactElement } from "react";
-
-export interface VideoComponentProps {
-  videoCookiesOk?: boolean | false;
-  videoURL?: string;
-  acceptFunction?: Function;
-}
+import { VideoComponentProps } from "../types";
 
 const VideoComponent = ({
   videoCookiesOk,

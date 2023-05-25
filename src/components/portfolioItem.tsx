@@ -1,15 +1,7 @@
 import React, { ReactElement } from "react";
 import { v4 as uuidv4 } from "uuid";
-import VideoComponent, { VideoComponentProps } from "./videoComponent";
-
-interface PortfolioItemProps extends VideoComponentProps {
-  headline: string;
-  description: string;
-  usedtech: string[];
-  imageCollection?: JSX.Element[];
-  link?: string;
-  downloadLink?: string;
-}
+import VideoComponent from "./videoComponent";
+import { PortfolioItemProps } from "../types";
 
 const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
   return (
@@ -36,13 +28,14 @@ const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
           acceptFunction={item.acceptFunction}
         />
       )}
-      <div className="image-container">
+      <div className="flex-container">
         {item.imageCollection !== undefined &&
           item.imageCollection.map((image) => (
-            <div key={uuidv4()}>{image}</div>
+            <div className="flex-image" key={uuidv4()}>
+              {image}
+            </div>
           ))}
       </div>
-
       <hr className="portfolio-item-hr"></hr>
     </div>
   );

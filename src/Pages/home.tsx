@@ -3,18 +3,14 @@ import Headline from "../components/headline";
 import "../style.css";
 import VideoComponent from "../components/videoComponent";
 import PageBase from "../components/pageBase";
-
-interface HomePageProps {
-  videoCookie: boolean;
-  videoCookieAcceptFn: Function;
-}
-
+import { HomePageProps } from "../types";
 /**
  * Renders home page layout
  */
 const HomePage = ({
-  videoCookie,
-  videoCookieAcceptFn,
+  videoURL,
+  videoCookiesOk,
+  acceptFunction,
 }: HomePageProps): ReactElement => {
   return (
     <PageBase>
@@ -49,8 +45,8 @@ const HomePage = ({
         </p>
         <VideoComponent
           videoURL="https://www.youtube-nocookie.com/embed/1d8ALlXSVBY"
-          videoCookiesOk={videoCookie}
-          acceptFunction={videoCookieAcceptFn}
+          videoCookiesOk={videoCookiesOk}
+          acceptFunction={acceptFunction}
         />
       </div>
     </PageBase>

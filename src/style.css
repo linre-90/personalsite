@@ -205,14 +205,35 @@ ul{
     text-align: center;
 }
 
-.content{
-    /*
-    margin-top: 100vh;*/
+.flex-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flex-image{
+    flex-basis: 350px;
+}
+
+.flex-image img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 .content hr{
     margin-top: 6rem;
     margin-bottom: 6rem;
+}
+
+.copyright-text{
+    text-align: center;
+    font-size: small;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .videoFrame{
