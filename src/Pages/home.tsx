@@ -3,6 +3,15 @@ import Headline from "../components/headline";
 import VideoComponent from "../components/videoComponent";
 import PageBase from "../components/pageBase";
 import { HomePageProps } from "../types";
+import { createUseStyles, useTheme } from "react-jss";
+import { Dark, Light } from "../theme";
+
+const useStyles = createUseStyles((theme: Dark | Light) => ({
+  headerColor: {
+    color: theme.highlightColor,
+  },
+}));
+
 /**
  * Renders home page layout
  */
@@ -11,11 +20,13 @@ const HomePage = ({
   videoCookiesOk,
   acceptFunction,
 }: HomePageProps): ReactElement => {
+  const theme = useTheme<Dark | Light>();
+  const classes = useStyles({ theme });
   return (
     <PageBase>
       <Headline></Headline>
-      <div className="">
-        <h2>Info</h2>
+      <div>
+        <h2 className={classes.headerColor}>Info</h2>
         <p>
           Olen Juho, tuleva ohjelmistokehittäjäsi. Koulutukseltani olen
           ohjelmistokehittäjä, joka on erikoistunut pelialaan. Lisäksi olen
