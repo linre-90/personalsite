@@ -13,15 +13,6 @@ function App() {
     <GlobalStyle>
       <Routes>
         <Route
-          path="/"
-          element={
-            <HomePage
-              videoCookiesOk={videoCookie}
-              acceptFunction={acceptGoogleCookies}
-            />
-          }
-        ></Route>
-        <Route
           path="/portfolio"
           element={
             <PortfolioPage
@@ -31,7 +22,15 @@ function App() {
           }
         ></Route>
         <Route path="/yhteys" element={<ContactPage />}></Route>
-        <Route path="*"></Route>
+        <Route
+          path="*"
+          element={
+            <HomePage
+              videoCookiesOk={videoCookie}
+              acceptFunction={acceptGoogleCookies}
+            />
+          }
+        ></Route>
       </Routes>
     </GlobalStyle>
   );
