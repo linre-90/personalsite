@@ -1,14 +1,9 @@
-import React, {
-  ReactElement,
-  RefObject,
-  useState,
-  useEffect,
-  useRef,
-} from "react";
+import React, { ReactElement, useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 interface NavpointProps {
-  target: RefObject<HTMLDivElement>;
+  address: string;
   id: string;
 }
 
@@ -56,20 +51,14 @@ const Nav = (props: { items: NavpointProps[] }): ReactElement => {
         <div>
           <h4 className="nav-header">Navigointi</h4>
           {props.items.map((element) => (
-            <button
+            <Link
               key={element.id}
               className="nav-btn"
-              type="button"
-              aria-label={`Vieritä ${element.id} kohdalle`}
-              onClick={() => {
-                element.target.current?.scrollIntoView({
-                  behavior: "smooth",
-                });
-                setActive(!active);
-              }}
+              aria-label={`Avaa sivu ${element.id}`}
+              to={element.address}
             >
               {element.id}
-            </button>
+            </Link>
           ))}
         </div>
         <div>

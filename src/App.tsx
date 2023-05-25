@@ -5,6 +5,8 @@ import Nav from "./components/nav";
 import BacktoTopButton from "./components/backToTop";
 import PortfolioItem from "./components/portfolioItem";
 import VideoComponent from "./components/videoComponent";
+import { Routes, Route, Link } from "react-router-dom";
+
 // Image imports
 import catsopinionblog from "./images/catsopinion-blog.webp";
 import catsopinionthumb from "./images/catsopinion-thumbnail.webp";
@@ -22,6 +24,7 @@ import kirjastowhole from "./images/whole.webp";
 import ray from "./images/thumbnail.webp";
 import rayhall from "./images/hallway.webp";
 import rayfireplace from "./images/fireplace.webp";
+import HomePage from "./Pages/home";
 
 function App() {
   const infoRef = useRef<HTMLDivElement>(null);
@@ -32,56 +35,22 @@ function App() {
   const acceptGoogleCookies = (): void => setVideoCookie(true);
 
   return (
-    <div className="container">
-      {/* Nav and back to top buttons */}
-      <Nav
-        items={[
-          { id: "Info", target: infoRef },
-          { id: "Portfolio", target: portfolioRef },
-          { id: "Yhteys", target: contactRef },
-        ]}
-      ></Nav>
-      <BacktoTopButton></BacktoTopButton>
-
-      {/** Headline section */}
-      <Headline></Headline>
-
-      {/** Content section */}
-      <div className="content">
-        <div id="info" ref={infoRef}></div>
-        <h2>Info</h2>
-        <p>
-          Olen Juho, tuleva ohjelmistokehittäjäsi. Koulutukseltani olen
-          ohjelmistokehittäjä, joka on erikoistunut pelialaan. Lisäksi olen
-          tutustunut web-kehityksen ja mobiililaitteiden maailmaan koulutuksen
-          kautta.
-        </p>
-        <p>
-          Pärjään tällä hetkellä useiden eri tekniikoiden kanssa, mukaan lukien
-          WordPress, React, Java ja C#. Suurimmat kiinnostuksen kohteeni ovat
-          full stack web-kehitys ja pelien tekeminen. Mobiilisovellukset ovat
-          myös mielenkiintoisia, ja olen tehnyt muutaman Android-järjestelmälle.
-        </p>
-        <p>
-          Olen valmistunut vuonna 2023 pelialan koulutusohjelmasta. Olen
-          hankkinut lisäkoulutusta Helsingin yliopistosta ja XAMK
-          ammattikorkeakoulusta. Olen kuitenkin harrastanut ohjelmointia jo
-          ennen koulutukseen hakeutumista, joten minulla on vähintään 5 vuoden
-          kokemus harrastukseni kautta.
-        </p>
-        <p>
-          <i>
-            Alta löydät video CV:ni, jolla kerron tarkemmin koulutuksestani ja
-            muista kiinnostuksen aiheistani. Mikäli olet herkkä välkkyville
-            valoille suosittelen kelaamaan 50 sekunnin kohdalle.
-          </i>
-        </p>
-        <VideoComponent
-          videoURL="https://www.youtube-nocookie.com/embed/1d8ALlXSVBY"
-          videoCookiesOk={videoCookie}
-          acceptFunction={acceptGoogleCookies}
-        />
-
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              videoCookie={videoCookie}
+              videoCookieAcceptFn={acceptGoogleCookies}
+            />
+          }
+        ></Route>
+        <Route path="/portfolio"></Route>
+        <Route path="/yhteys"></Route>
+        <Route path="*"></Route>
+      </Routes>
+      <div className="container">
         <hr></hr>
         <div id="portfolio" ref={portfolioRef}></div>
         <h2>Portfolio</h2>
@@ -241,7 +210,7 @@ function App() {
           </li>
         </ul>
       </div>
-    </div>
+    </>
   );
 }
 
