@@ -33,7 +33,6 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 const PageBase = ({ children, renderContact }: PageBaseProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
-  console.log(renderContact);
   return (
     <div className={classes.container}>
       {/* Nav and back to top buttons */}
