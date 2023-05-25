@@ -6,7 +6,7 @@ import Contact from "../components/contact";
  */
 const ContactPage = (): ReactElement => {
   return (
-    <PageBase>
+    <PageBase renderContact={false}>
       <Contact />
     </PageBase>
   );

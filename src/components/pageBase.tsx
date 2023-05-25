@@ -4,6 +4,7 @@ import Nav from "./nav";
 import { PageBaseProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
+import Contact from "./contact";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   container: {
@@ -19,6 +20,9 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
       width: "60%",
     },
   },
+  contactSpacer: {
+    height: 50,
+  },
 }));
 
 /**
@@ -26,10 +30,10 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
  * @param param0
  * @returns
  */
-const PageBase = ({ children }: PageBaseProps): ReactElement => {
+const PageBase = ({ children, renderContact }: PageBaseProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
-
+  console.log(renderContact);
   return (
     <div className={classes.container}>
       {/* Nav and back to top buttons */}
@@ -41,7 +45,12 @@ const PageBase = ({ children }: PageBaseProps): ReactElement => {
         ]}
       ></Nav>
       <BacktoTopButton></BacktoTopButton>
+
       <>{children}</>
+      <div className={classes.contactSpacer}></div>
+      <hr></hr>
+      <div className={classes.contactSpacer}></div>
+      {renderContact === undefined && <Contact />}
     </div>
   );
 };

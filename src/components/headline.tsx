@@ -33,6 +33,9 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
   specialColorHeader: {
     color: theme.highlightColor,
   },
+  divider: {
+    width: "100%",
+  },
 }));
 
 const Headline = (): ReactElement => {
@@ -98,6 +101,7 @@ const Headline = (): ReactElement => {
           </svg>
         </div>
       </h1>
+      <hr className={classes.divider}></hr>
     </div>
   );
 };

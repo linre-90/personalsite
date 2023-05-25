@@ -6,7 +6,7 @@ import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
-  dividerStyle: { width: "40%" },
+  dividerStyle: { width: "40%", marginLeft: 0, marginTop: 40 },
   techPill: {
     border: "1px solid " + theme.highlightColor,
     marginRight: 5,
@@ -32,6 +32,10 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
       borderRadius: 5,
     },
   },
+  itemWrapper: {
+    marginTop: 80,
+    marginBottom: 80,
+  },
 }));
 
 /**
@@ -44,7 +48,7 @@ const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
   const classes = useStyles({ theme });
 
   return (
-    <div>
+    <div className={classes.itemWrapper}>
       <h3>{item.headline}</h3>
       <div>
         {item.usedtech.map((i) => (

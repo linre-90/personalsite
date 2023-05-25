@@ -22,6 +22,7 @@ export interface PageBaseProps {
     | ReactElement[]
     | ReactFragment
     | undefined;
+  renderContact?: boolean;
 }
 
 export interface NavProps {

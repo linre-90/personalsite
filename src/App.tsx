@@ -21,7 +21,15 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/portfolio" element={<PortfolioPage />}></Route>
+        <Route
+          path="/portfolio"
+          element={
+            <PortfolioPage
+              acceptFunction={acceptGoogleCookies}
+              videoCookiesOk={videoCookie}
+            />
+          }
+        ></Route>
         <Route path="/yhteys" element={<ContactPage />}></Route>
         <Route path="*"></Route>
       </Routes>
