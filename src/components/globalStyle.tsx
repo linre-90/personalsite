@@ -5,28 +5,28 @@ import { Dark, Light } from "../theme";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   "@global": {
-    "& *": {
+    "*": {
       boxSizing: "border-box",
     },
-    "& body": {
+    body: {
       fontFamily: theme.textFont,
       margin: 0,
       padding: 0,
       backgroundColor: theme.mainColor,
       overflowX: "hidden",
     },
-    "& p, span, a": {
+    "p, span, a": {
       color: theme.textColor,
     },
-    "& ul": {
+    ul: {
       listStyle: "none",
       paddingLeft: 0,
     },
-    "& h1,h2,h3,h4,h5,h6": {
+    "h1,h2,h3,h4,h5,h6": {
       fontFamily: theme.headerFont,
       color: theme.textColor,
     },
-    "& a,button": {
+    "a,button": {
       fontFamily: theme.textFont,
     },
   },
