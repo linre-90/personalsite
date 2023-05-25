@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import Headline from "../components/headline";
-import "../style.css";
 import VideoComponent from "../components/videoComponent";
 import PageBase from "../components/pageBase";
 import { HomePageProps } from "../types";
@@ -15,7 +14,7 @@ const HomePage = ({
   return (
     <PageBase>
       <Headline></Headline>
-      <div className="content">
+      <div className="">
         <h2>Info</h2>
         <p>
           Olen Juho, tuleva ohjelmistokehittäjäsi. Koulutukseltani olen

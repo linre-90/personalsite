@@ -1,4 +1,4 @@
-interface colorTheme {
+export interface colorTheme {
   mainColor: string;
   secondaryColor: string;
   complimentaryColor: string;
@@ -7,14 +7,14 @@ interface colorTheme {
   highlightColor: string;
 }
 
-interface fontTheme {
+export interface fontTheme {
   headerFont: string;
   textFont: string;
 }
 
 export class Dark implements colorTheme, fontTheme {
-  textFont = "'Raleway', sans-serif";
-  headerFont = "Major Mono Display";
+  textFont = "'Raleway', sans-serif;";
+  headerFont = "'Major Mono Display', monospace;";
   mainColor = "#1B2430";
   secondaryColor = "#51557E";
   complimentaryColor = "#816797";
@@ -24,8 +24,8 @@ export class Dark implements colorTheme, fontTheme {
 }
 
 export class Light implements colorTheme, fontTheme {
-  textFont = "'Raleway', sans-serif";
-  headerFont = "Major Mono Display";
+  textFont = "'Raleway', sans-serif;";
+  headerFont = "'Major Mono Display', monospace;";
   mainColor = "#1B2430";
   secondaryColor = "#51557E";
   complimentaryColor = "#816797";

@@ -1,10 +1,28 @@
 import React, { ReactElement } from "react";
+import { createUseStyles, useTheme } from "react-jss";
+import { Dark, Light } from "../theme";
+
+const useStyles = createUseStyles((theme: Dark | Light) => ({
+  backToTopButton: {
+    position: "fixed",
+    bottom: 90,
+    right: 30,
+    zIndex: 19,
+    borderRadius: 25,
+    width: 50,
+    height: 50,
+    border: "none",
+    cursor: "pointer",
+  },
+}));
 
 const BacktoTopButton = (): ReactElement => {
+  const theme = useTheme<Dark | Light>();
+  const classes = useStyles({ theme });
   return (
     <>
       <button
-        className="menu-button back-to-top-button"
+        className={classes.backToTopButton}
         onClick={() => window.scrollTo({ behavior: "smooth", left: 0, top: 0 })}
         aria-label="Palaa takaisin ylös"
       >

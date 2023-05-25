@@ -3,16 +3,68 @@ import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { NavProps } from "../types";
 import Contact from "./contact";
+import { createUseStyles, useTheme } from "react-jss";
+import { Dark, Light } from "../theme";
+
+const useStyles = createUseStyles((theme: Dark | Light) => ({
+  navMenu: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    backgroundColor: theme.mainColor,
+    position: "fixed",
+    padding: "2em",
+    height: "100%",
+    right: 0,
+    border: "1px solid " + theme.secondaryColor,
+    boxShadow: "-1px -1px 5px 2px " + theme.secondaryColor,
+    borderRadius: "20px 0px 0px 0px",
+    opacity: 0,
+    width: "90%",
+    zIndex: 21,
+    "@media only screen and (min-width: 900px)": {
+      width: "40%",
+    },
+    "@media only screen and (min-width: 1200px)": {
+      width: "30%",
+    },
+  },
+  navHeader: {
+    color: theme.highlightColor,
+  },
+  menuButton: {
+    position: "fixed",
+    bottom: 30,
+    right: 30,
+    zIndex: 22,
+    borderRadius: 25,
+    width: 50,
+    height: 50,
+    border: "none",
+    cursor: "pointer",
+  },
+  navButton: {
+    backgroundColor: "rgba(1,1,1,0)",
+    border: "none",
+    fontSize: "1.25rem",
+    display: "block",
+    marginTop: 20,
+    color: theme.linkColor,
+    textDecoration: "underline",
+    cursor: "pointer",
+  },
+}));
 
 const Nav = (props: { items: NavProps[] }): ReactElement => {
   const [active, setActive] = useState<boolean>(false);
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
   const navmenu = useRef<HTMLDivElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
+  const theme = useTheme<Dark | Light>();
+  const classes = useStyles({ theme });
 
   useEffect(() => {
     if (active) {
-      navmenu.current?.classList.remove("d-none");
       gsap.fromTo(
         navmenu.current,
         {
@@ -44,13 +96,13 @@ const Nav = (props: { items: NavProps[] }): ReactElement => {
 
   return (
     <nav>
-      <div ref={navmenu} className="nav-menu">
+      <div ref={navmenu} className={classes.navMenu}>
         <div>
-          <h2 className="nav-header">Navigointi</h2>
+          <h2 className={classes.navHeader}>Navigointi</h2>
           {props.items.map((element) => (
             <Link
               key={element.id}
-              className="nav-btn"
+              className={classes.navButton}
               aria-label={`Avaa sivu ${element.id}`}
               to={element.address}
             >
@@ -65,7 +117,7 @@ const Nav = (props: { items: NavProps[] }): ReactElement => {
 
       <button
         ref={openButtonRef}
-        className="menu-button"
+        className={classes.menuButton}
         type="button"
         onClick={() => setActive(!active)}
         aria-label="Avaa navigointi valikko"

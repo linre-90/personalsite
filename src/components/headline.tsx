@@ -1,7 +1,43 @@
 import React, { ReactElement, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
+import { createUseStyles, useTheme } from "react-jss";
+import { Dark, Light } from "../theme";
+
+const useStyles = createUseStyles((theme: Dark | Light) => ({
+  headlineWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    height: "100vh",
+  },
+  headlineSpecial: {
+    fontSize: "1rem",
+    "& div": {
+      marginTop: 30,
+      marginBottom: 30,
+    },
+    "& :last-child": {
+      marginTop: 60,
+      textAlign: "center",
+    },
+    "@media only screen and (min-width: 296px)": {
+      fontSize: "1.35rem",
+    },
+    "@media only screen and (min-width: 688px)": {
+      fontSize: "2rem",
+    },
+    "@media only screen and (min-width: 1270px)": {
+      fontSize: "3rem",
+    },
+  },
+  specialColorHeader: {
+    color: theme.highlightColor,
+  },
+}));
 
 const Headline = (): ReactElement => {
+  const theme = useTheme<Dark | Light>();
+  const classes = useStyles({ theme });
   const rootAnimationRef = useRef<HTMLHeadingElement>(null);
   const animationRef1 = useRef<HTMLDivElement>(null);
   const animationRef2 = useRef<HTMLDivElement>(null);
@@ -38,13 +74,13 @@ const Headline = (): ReactElement => {
   }, []);
 
   return (
-    <div className="headline-wrapper">
-      <h1 ref={rootAnimationRef} className="headline-special">
+    <div className={classes.headlineWrapper}>
+      <h1 ref={rootAnimationRef} className={classes.headlineSpecial}>
         <div ref={animationRef1}>Etsitkö</div>
         <div ref={animationRef2}>
           <u>seuraavaa</u>
         </div>
-        <div className="special-color-header" ref={animationRef3}>
+        <div className={classes.specialColorHeader} ref={animationRef3}>
           ohjelmisto
           <br />
           kehittäjääsi?

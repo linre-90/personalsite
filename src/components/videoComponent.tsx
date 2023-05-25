@@ -1,15 +1,82 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useRef, useEffect } from "react";
 import { VideoComponentProps } from "../types";
+import { createUseStyles, useTheme } from "react-jss";
+import { Dark, Light } from "../theme";
+import gsap from "gsap";
 
+const useStyles = createUseStyles((theme: Dark | Light) => ({
+  videoFrame: {
+    position: "relative",
+    overflow: "hidden",
+    width: "100%",
+    paddingTop: "56.25%",
+    marginBottom: "4rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+    zIndex: 1,
+  },
+  video: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    width: "100%",
+    height: "100%",
+  },
+  videoCookieBanner: {
+    backgroundColor: theme.secondaryColor,
+    padding: 20,
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  videoCookieBannerUl: {
+    color: theme.textColor,
+    paddingLeft: 40,
+    fontSize: ".75rem",
+  },
+  videoCookieBannerButton: {
+    display: "block",
+    height: 60,
+    width: 100,
+    backgroundColor: "rgba(16, 211, 42, .5)",
+    borderRadius: 10,
+    border: "3px solid green",
+    color: "black",
+    marginTop: 10,
+    cursor: "pointer",
+  },
+}));
+
+/**
+ * Renders embedded youtube video components with correct sizes.
+ * @param param0
+ * @returns
+ */
 const VideoComponent = ({
   videoCookiesOk,
   videoURL,
   acceptFunction,
 }: VideoComponentProps): ReactElement => {
+  const theme = useTheme<Dark | Light>();
+  const classes = useStyles({ theme });
+  const cookieButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    cookieButtonRef.current?.addEventListener("mouseenter", () => {
+      gsap.to(cookieButtonRef.current, { scaleX: 1.1, scaleY: 1.1 });
+    });
+    cookieButtonRef.current?.addEventListener("mouseleave", () => {
+      gsap.to(cookieButtonRef.current, { scaleX: 1.0, scaleY: 1.0 });
+    });
+  }, []);
+
   if (videoCookiesOk) {
     return (
-      <div className="videoFrame">
+      <div className={classes.videoFrame}>
         <iframe
+          className={classes.video}
           src={videoURL}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -18,7 +85,7 @@ const VideoComponent = ({
     );
   } else {
     return (
-      <div className="video-cookie-banner">
+      <div className={classes.videoCookieBanner}>
         <h4>Hyväksy evästeet katsoaksesi sisällytetyn videon.</h4>
         <p>
           <u>
@@ -26,7 +93,7 @@ const VideoComponent = ({
             Google kerää esimerkiksi seuraavia tietoja:
           </u>
         </p>
-        <ul>
+        <ul className={classes.videoCookieBannerUl}>
           <li>Hakuhistoria</li>
           <li>Katsotut videot</li>
           <li>Näytöt ja mainosten klikkaukset</li>
@@ -47,7 +114,12 @@ const VideoComponent = ({
           Lue Google tietosuoja seloste tästä
         </a>
         {acceptFunction !== undefined && (
-          <button type="button" onClick={() => acceptFunction()}>
+          <button
+            ref={cookieButtonRef}
+            className={classes.videoCookieBannerButton}
+            type="button"
+            onClick={() => acceptFunction()}
+          >
             Hyväksy evästeet
           </button>
         )}

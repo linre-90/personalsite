@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import "../style.css";
 import PageBase from "../components/pageBase";
 import PortfolioItem from "../components/portfolioItem";
 import Image from "../components/image/image";
