@@ -123,6 +123,10 @@ const VideoComponent = ({
         <a href="https://policies.google.com/privacy?hl=en-US">
           Lue Google tietosuoja seloste tästä
         </a>
+        <p>
+          Painamalla "Hyväksy evästeet" nappia tallennamme suostumuksesi
+          evästeeseen.
+        </p>
         {acceptFunction !== undefined && (
           <button
             ref={cookieButtonRef}

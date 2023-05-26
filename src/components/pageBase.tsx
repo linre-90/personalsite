@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { PageBaseProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
@@ -31,6 +31,10 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 const PageBase = ({ children, renderContact }: PageBaseProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   return (
     <div className={classes.container}>
       <>{children}</>

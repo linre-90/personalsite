@@ -23,6 +23,7 @@ const HomePage = ({
 }: HomePageProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
+
   return (
     <motion.main
       initial={{ opacity: 0, visibility: "hidden" }}

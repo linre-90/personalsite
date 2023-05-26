@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./Pages/home";
 import PortfolioPage from "./Pages/portfolio";
@@ -9,9 +9,20 @@ import BacktoTopButton from "./components/backToTop";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
-  const [videoCookie, setVideoCookie] = useState<boolean>(false);
+  const [videoCookie, setVideoCookie] = useState<boolean>(
+    window.sessionStorage.getItem("videocookie") ? true : false
+  );
   const acceptGoogleCookies = (): void => setVideoCookie(true);
   const location = useLocation();
+
+  console.log(window.sessionStorage.getItem("videocookie"));
+
+  useEffect(() => {
+    if (videoCookie) {
+      window.sessionStorage.setItem("videocookie", "ok");
+    }
+  }, [videoCookie]);
+
   return (
     <GlobalStyle>
       <Nav
