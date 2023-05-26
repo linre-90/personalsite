@@ -2,7 +2,6 @@ import React, { ReactElement, useRef, useEffect } from "react";
 import { VideoComponentProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
-import gsap from "gsap";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   videoFrame: {
@@ -45,7 +44,14 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     border: "3px solid green",
     color: "black",
     marginTop: 10,
+    transition: "height .2s, width .2s, background-color .2s",
+  },
+  videoCookieBannerButtonHover: {
+    height: 70,
+    width: 110,
     cursor: "pointer",
+    transition: "height .2s, width .2s, background-color .2s",
+    backgroundColor: "rgba(16, 211, 42, 1)",
   },
 }));
 
@@ -65,12 +71,16 @@ const VideoComponent = ({
 
   useEffect(() => {
     cookieButtonRef.current?.addEventListener("mouseenter", () => {
-      gsap.to(cookieButtonRef.current, { scaleX: 1.1, scaleY: 1.1 });
+      cookieButtonRef.current?.classList.add(
+        classes.videoCookieBannerButtonHover
+      );
     });
     cookieButtonRef.current?.addEventListener("mouseleave", () => {
-      gsap.to(cookieButtonRef.current, { scaleX: 1.0, scaleY: 1.0 });
+      cookieButtonRef.current?.classList.remove(
+        classes.videoCookieBannerButtonHover
+      );
     });
-  }, []);
+  }, [classes.videoCookieBannerButtonHover]);
 
   if (videoCookiesOk) {
     return (
