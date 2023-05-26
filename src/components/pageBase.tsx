@@ -1,6 +1,4 @@
 import React, { ReactElement } from "react";
-import BacktoTopButton from "./backToTop";
-import Nav from "./nav";
 import { PageBaseProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
@@ -35,16 +33,6 @@ const PageBase = ({ children, renderContact }: PageBaseProps): ReactElement => {
   const classes = useStyles({ theme });
   return (
     <div className={classes.container}>
-      {/* Nav and back to top buttons */}
-      <Nav
-        items={[
-          { id: "Etusivu", address: "/" },
-          { id: "Portfolio", address: "/portfolio" },
-          { id: "Yhteys", address: "/yhteys" },
-        ]}
-      ></Nav>
-      <BacktoTopButton></BacktoTopButton>
-
       <>{children}</>
       <div className={classes.contactSpacer}></div>
       <hr></hr>

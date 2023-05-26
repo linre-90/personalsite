@@ -1,5 +1,4 @@
-import React, { ReactElement, useState, useEffect, useRef } from "react";
-import gsap from "gsap";
+import React, { ReactElement, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NavProps } from "../types";
 import Contact from "./contact";
@@ -28,6 +27,9 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     "@media only screen and (min-width: 1200px)": {
       width: "30%",
     },
+    transform: "translateX(400px)",
+    transition: "transform .5s, opacity .5s, visibility .5s",
+    visibility: "hidden",
   },
   navHeader: {
     color: theme.highlightColor,
@@ -42,6 +44,8 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     height: 50,
     border: "none",
     cursor: "pointer",
+    transform: "rotate(0deg)",
+    transition: "transform .5s",
   },
   navButton: {
     backgroundColor: "rgba(1,1,1,0)",
@@ -53,50 +57,31 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     textDecoration: "underline",
     cursor: "pointer",
   },
+  show: {
+    visibility: "visible",
+    transform: "translateX(0)",
+    opacity: 1,
+    transition: "transform .5s, opacity .5s, visibility .5s",
+  },
+  openButtonAnimation: {
+    transform: "rotate(90deg)",
+    transition: "transform .5s",
+  },
 }));
 
 const Nav = (props: { items: NavProps[] }): ReactElement => {
   const [active, setActive] = useState<boolean>(false);
-  const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
   const navmenu = useRef<HTMLDivElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
 
-  useEffect(() => {
-    if (active) {
-      gsap.fromTo(
-        navmenu.current,
-        {
-          x: 400,
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          display: "flex",
-        }
-      );
-      gsap.to(openButtonRef.current, {
-        rotate: 90,
-      });
-    } else if (!isFirstRender) {
-      gsap.to(openButtonRef.current, {
-        rotate: 0,
-      });
-      gsap.to(navmenu.current, {
-        x: 400,
-        opacity: 0,
-        display: "none",
-      });
-    }
-
-    setIsFirstRender(false);
-  }, [active, isFirstRender]);
-
   return (
     <nav>
-      <div ref={navmenu} className={classes.navMenu}>
+      <div
+        ref={navmenu}
+        className={classes.navMenu + " " + (active ? classes.show : "")}
+      >
         <div>
           <h2 className={classes.navHeader}>Navigointi</h2>
           {props.items.map((element) => (
@@ -105,6 +90,7 @@ const Nav = (props: { items: NavProps[] }): ReactElement => {
               className={classes.navButton}
               aria-label={`Avaa sivu ${element.id}`}
               to={element.address}
+              onClick={() => setActive(!active)}
             >
               {element.id}
             </Link>
@@ -117,7 +103,9 @@ const Nav = (props: { items: NavProps[] }): ReactElement => {
 
       <button
         ref={openButtonRef}
-        className={classes.menuButton}
+        className={
+          classes.menuButton + " " + (active ? classes.openButtonAnimation : "")
+        }
         type="button"
         onClick={() => setActive(!active)}
         aria-label="Avaa navigointi valikko"
