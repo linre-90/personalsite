@@ -1,5 +1,4 @@
-import React, { ReactElement, useRef, useLayoutEffect } from "react";
-import gsap from "gsap";
+import React, { ReactElement } from "react";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 
@@ -36,69 +35,81 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
   divider: {
     width: "100%",
   },
+  "@keyframes slidein": {
+    from: { transform: "translateX(-200px)", opacity: 0 },
+    to: { transform: "translateX(0px)", opacity: 1, visibility: "visible" },
+  },
+  header1: {
+    animation: "$slidein",
+    animationDuration: 1000,
+    animationFillMode: "forwards",
+    visibility: "hidden",
+  },
+  header2: {
+    animationDelay: 1000,
+    animation: "$slidein",
+    animationFillMode: "forwards",
+    animationDuration: 1000,
+    visibility: "hidden",
+  },
+  header3: {
+    animation: "$slidein",
+    animationDuration: 1000,
+    animationFillMode: "forwards",
+    animationDelay: 2000,
+    visibility: "hidden",
+  },
+  "@keyframes arrow": {
+    "0%": { transform: "scaleY(1)" },
+    "25%": { transform: "scale(1.1)" },
+  },
+  animatedArrow: {
+    animation: "$arrow",
+    animationDuration: 1000,
+    animationIterationCount: "infinite",
+  },
+  "@keyframes slideupwards": {
+    from: { transform: "translateY(400px)", opacity: 0 },
+    to: { transform: "translateY(0px)", opacity: 1, visibility: "visible" },
+  },
+  slideup: {
+    animation: "$slideupwards",
+    animationDuration: 1000,
+    animationDelay: 3000,
+    visibility: "hidden",
+    animationFillMode: "forwards",
+  },
 }));
 
 const Headline = (): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
-  const rootAnimationRef = useRef<HTMLHeadingElement>(null);
-  const animationRef1 = useRef<HTMLDivElement>(null);
-  const animationRef2 = useRef<HTMLDivElement>(null);
-  const animationRef3 = useRef<HTMLDivElement>(null);
-  const animationRef4 = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-      tl.from(animationRef1.current, { x: -100, opacity: 0 });
-      tl.from(animationRef2.current, { x: -100, opacity: 0 });
-      tl.from(animationRef3.current, { x: -100, opacity: 0 });
-      // Arrow animation loop
-      const arrowTimelineLoop = gsap.timeline({ repeat: -1 });
-      arrowTimelineLoop.to(animationRef4.current, { scaleY: 1.5, duration: 1 });
-      arrowTimelineLoop.to(animationRef4.current, { scaleY: 1, duration: 1 });
-      arrowTimelineLoop.pause();
-
-      // Arrow revela animation
-      const arrowTimeline = gsap.timeline();
-      arrowTimeline.from(animationRef4.current, {
-        scaleX: 3,
-        duration: 1,
-        opacity: 0,
-      });
-      arrowTimeline.to(animationRef4.current, { scaleY: 1.5, duration: 1 });
-      arrowTimeline.to(animationRef4.current, { scaleY: 1, duration: 1 });
-      arrowTimeline.eventCallback("onComplete", () => {
-        arrowTimelineLoop.play();
-      });
-    }, rootAnimationRef); // <- IMPORTANT! Scopes selector text
-
-    return () => ctx.revert(); // cleanup
-  }, []);
 
   return (
     <div className={classes.headlineWrapper}>
-      <h1 ref={rootAnimationRef} className={classes.headlineSpecial}>
-        <div ref={animationRef1}>Etsitkö</div>
-        <div ref={animationRef2}>
+      <h1 className={classes.headlineSpecial}>
+        <div className={classes.header1}>Etsitkö</div>
+        <div className={classes.header2}>
           <u>seuraavaa</u>
         </div>
-        <div className={classes.specialColorHeader} ref={animationRef3}>
+        <div className={classes.header3 + " " + classes.specialColorHeader}>
           ohjelmisto
           <br />
           kehittäjääsi?
         </div>
-        <div ref={animationRef4}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="64"
-            height="64"
-            fill="currentColor"
-            className="bi bi-caret-down"
-            viewBox="0 0 16 16"
-          >
-            <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-          </svg>
+        <div className={classes.slideup}>
+          <div className={classes.animatedArrow}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              fill="currentColor"
+              className="bi bi-caret-down"
+              viewBox="0 0 16 16"
+            >
+              <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+            </svg>
+          </div>
         </div>
       </h1>
       <hr className={classes.divider}></hr>
