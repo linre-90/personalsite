@@ -1,3 +1,5 @@
+import { ContentSelector } from "./enums";
+
 /** Component types ***************************************************************/
 export interface VideoComponentProps {
   videoCookiesOk?: boolean | false;
@@ -12,9 +14,10 @@ export interface PortfolioItemProps extends VideoComponentProps {
   imageCollection?: JSX.Element[];
   link?: string;
   downloadLink?: string;
+  readContent: ContentSelector;
 }
 
-export interface PageBaseProps {
+export interface ChildrenProps {
   children?:
     | typeof Children
     | (typeof Children)[]
@@ -22,6 +25,9 @@ export interface PageBaseProps {
     | ReactElement[]
     | ReactFragment
     | undefined;
+}
+
+export interface PageBaseProps extends ChildrenProps {
   renderContact?: boolean;
 }
 
@@ -33,6 +39,10 @@ export interface NavProps {
 export interface ImageProps {
   img: string;
   alt: string;
+}
+
+export interface ViewpfProps extends ChildrenProps {
+  content: ContentSelector;
 }
 
 /** Page component types ***************************************************************/

@@ -5,9 +5,10 @@ import Image from "../components/image/image";
 import { images } from "../components/image/imageImports";
 import { PortfolioPageProps } from "../types";
 import { motion } from "framer-motion";
+import { ContentSelector } from "../enums";
 
 /**
- * Renders home page layout
+ * Renders portfolio listing and reader
  */
 const PortfolioPage = ({
   acceptFunction,
@@ -22,8 +23,8 @@ const PortfolioPage = ({
       transition={{ duration: 0.5 }}
     >
       <PageBase>
-        <h1>Portfolio</h1>
         <PortfolioItem
+          readContent={ContentSelector.Catsopinion}
           key={"a1"}
           headline="Cats Opinion"
           description="Blogi, jonka aiheena olivat kissat ja niiden salamyhkäinen elämä, oli saatavilla sekä englanniksi että suomeksi, mutta päätimme lopettaa bloggaamisen, koska se vei liikaa aikaa muilta projekteilta."
@@ -40,6 +41,7 @@ const PortfolioPage = ({
           ]}
         />
         <PortfolioItem
+          readContent={ContentSelector.Catquiz}
           key={"a2"}
           headline="Cat Quiz"
           description="Kysele ja vastaa -peli, joka sai inspiraationsa kissoista, oli täydentävä osa Cats Opinion -blogia tarjoten interaktiivista sisältöä ja viihdykettä."
@@ -58,6 +60,7 @@ const PortfolioPage = ({
           link="https://catquiz-843f1.web.app/"
         />
         <PortfolioItem
+          readContent={ContentSelector.Catvision}
           key={"a3"}
           headline="Cat vision"
           description="Unitylla toteutettu web-selainpeli, joka havainnollistaa ihmisen ja kissan näkökyvyn eroja. Se oli osa Cats Opinion -blogin interaktiivista sisältöä."
@@ -75,6 +78,7 @@ const PortfolioPage = ({
           link="https://catvision-68afa.web.app/"
         />
         <PortfolioItem
+          readContent={ContentSelector.Footkin}
           key={"a4"}
           headline="Footkin's halloween revolution"
           description="Teimme Unitylla yksinkertaisen Halloween-teemaisen pelin. Osallistuin neljän muun henkilön kanssa nelipäiväiseen pelijamitapahtumaan."
@@ -95,6 +99,7 @@ const PortfolioPage = ({
           acceptFunction={acceptFunction}
         />
         <PortfolioItem
+          readContent={ContentSelector.VirtualLib}
           key={"a5"}
           headline="Virtuaalikirjasto"
           description="Teimme koulussa työssäoppimisjakson aikana paikalliselle kirjastolle pelin. Pelissä pelaaja suorittaa possun antamia tehtäviä ja samalla tutustuu kirjaston tarjontaan. Lisäsimme peliin myös toimivia tietokoneita, joilla voi pelata minipelejä."
@@ -113,6 +118,7 @@ const PortfolioPage = ({
           ]}
         />
         <PortfolioItem
+          readContent={ContentSelector.Raytrace}
           key={"a6"}
           headline="Unity raytracing"
           description="Tehtävänä oli esitellä joko Universal Render Pipeline (URP) -renderöintiä tai High Definition Render Pipeline (HDRP) -renderöintiä. Päätin tehdä HDRP:n avulla linnamaisen kentän, joka hyödyntää Nvidian ray tracing -tekniikkaa ja DLSS-tekniikoita."

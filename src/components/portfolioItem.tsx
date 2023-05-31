@@ -4,17 +4,24 @@ import VideoComponent from "./videoComponent";
 import { PortfolioItemProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
+import Viewpf from "./viewpf";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   dividerStyle: { width: "40%", marginLeft: 0, marginTop: 40 },
   techPill: {
-    border: "1px solid " + theme.highlightColor,
+    border: "1px solid " + theme.complimentaryColor,
     marginRight: 5,
     marginBottom: 5,
     borderRadius: 5,
     padding: 5,
-    color: theme.highlightColor,
+    color: theme.complimentaryColor,
     fontSize: ".75rem",
+  },
+  techPilWrapper: {
+    border: `1px solid ${theme.complimentaryColor}`,
+    borderBottom: 0,
+    borderLeft: 0,
+    padding: 20,
   },
   flexImageGridContainer: {
     marginTop: 10,
@@ -47,10 +54,11 @@ const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
 
+  /** */
   return (
     <div className={classes.itemWrapper}>
       <h3>{item.headline}</h3>
-      <div>
+      <div className={classes.techPilWrapper}>
         {item.usedtech.map((i) => (
           <span className={classes.techPill} key={uuidv4()}>
             {i}
@@ -79,6 +87,7 @@ const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
             </div>
           ))}
       </div>
+      <Viewpf content={item.readContent} />
       <hr className={classes.dividerStyle}></hr>
     </div>
   );

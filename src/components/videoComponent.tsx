@@ -12,7 +12,7 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     marginBottom: "4rem",
     marginLeft: "auto",
     marginRight: "auto",
-    zIndex: 1,
+    zIndex: 0,
   },
   video: {
     position: "absolute",

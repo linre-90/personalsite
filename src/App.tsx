@@ -15,8 +15,6 @@ function App() {
   const acceptGoogleCookies = (): void => setVideoCookie(true);
   const location = useLocation();
 
-  console.log(window.sessionStorage.getItem("videocookie"));
-
   useEffect(() => {
     if (videoCookie) {
       window.sessionStorage.setItem("videocookie", "ok");
