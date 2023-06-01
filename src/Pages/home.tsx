@@ -1,8 +1,7 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import Headline from "../components/headline";
 import VideoComponent from "../components/videoComponent";
 import PageBase from "../components/pageBase";
-import { HomePageProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 import { motion } from "framer-motion";
@@ -16,13 +15,24 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 /**
  * Renders home page layout
  */
-const HomePage = ({
-  videoURL,
-  videoCookiesOk,
-  acceptFunction,
-}: HomePageProps): ReactElement => {
+const HomePage = (): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
+  const [videoCookie, setVideoCookie] = useState<boolean>(
+    window.sessionStorage.getItem("videocookie") ? true : false
+  );
+  const acceptGoogleCookies = (): void => setVideoCookie(true);
+
+  useEffect(() => {
+    alert(
+      "Hei! Sivuille tehdään päivityksiä. Sivuston toiminta ja sisältö on puutteellista!"
+    );
+    if (videoCookie) {
+      window.sessionStorage.setItem("videocookie", "ok");
+    }
+  }, [videoCookie]);
+
+  useEffect(() => {}, []);
 
   return (
     <motion.main
@@ -64,8 +74,8 @@ const HomePage = ({
           </p>
           <VideoComponent
             videoURL="https://www.youtube-nocookie.com/embed/1d8ALlXSVBY"
-            videoCookiesOk={videoCookiesOk}
-            acceptFunction={acceptFunction}
+            videoCookiesOk={videoCookie}
+            acceptFunction={acceptGoogleCookies}
           />
         </div>
       </PageBase>

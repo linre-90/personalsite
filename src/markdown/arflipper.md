@@ -1,5 +1,4 @@
-﻿# Ar Flipper
-
+﻿# Ar Flipper 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam eu mi tincidunt aliquet. Vivamus feugiat ultricies mollis. Pellentesque vehicula diam eget urna semper, ac maximus lectus imperdiet. Duis scelerisque eget quam sed fermentum. Mauris a lorem lectus. Mauris bibendum feugiat nulla vitae sollicitudin. Aliquam faucibus non velit eget efficitur.
 
 Donec eget lectus leo. Pellentesque sagittis vitae nunc et scelerisque. Maecenas porttitor metus arcu, sit amet hendrerit ipsum gravida nec. Duis faucibus massa nec odio ultricies, eu venenatis nisi porta. Quisque volutpat viverra odio, nec aliquet tellus sodales non. Proin id lacus sed justo ultrices porta. Proin vulputate fringilla dictum.

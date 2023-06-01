@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import { v4 as uuidv4 } from "uuid";
-import VideoComponent from "./videoComponent";
 import { PortfolioItemProps } from "../types";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
@@ -28,7 +27,7 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     marginBottom: 10,
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "start",
     gap: 10,
   },
   flexImageContainer: {
@@ -46,48 +45,41 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 }));
 
 /**
- * Renders single portfolio item
+ * Renders single portfolio item preview
  * @param item
  * @returns
  */
-const PortfolioItem = (item: PortfolioItemProps): ReactElement => {
+const PortfolioItem = ({
+  description,
+  headline,
+  readContent,
+  thumbnailImage,
+  usedtech,
+  containsVideoContent,
+}: PortfolioItemProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
 
-  /** */
   return (
     <div className={classes.itemWrapper}>
-      <h3>{item.headline}</h3>
+      <h3>{headline}</h3>
       <div className={classes.techPilWrapper}>
-        {item.usedtech.map((i) => (
+        {usedtech.map((i) => (
           <span className={classes.techPill} key={uuidv4()}>
             {i}
           </span>
         ))}
       </div>
-      <p>{item.description}</p>
-      {item.link !== undefined && <a href={item.link}>Linkki sivuille.</a>}
-      {item.downloadLink !== undefined && (
-        <a href={item.downloadLink} download={true}>
-          Lataa.
-        </a>
-      )}
-      {item.videoURL !== undefined && (
-        <VideoComponent
-          videoURL={item.videoURL}
-          videoCookiesOk={item.videoCookiesOk}
-          acceptFunction={item.acceptFunction}
-        />
-      )}
+      <p>{description}</p>
       <div className={classes.flexImageGridContainer}>
-        {item.imageCollection !== undefined &&
-          item.imageCollection.map((image) => (
-            <div className={classes.flexImageContainer} key={uuidv4()}>
-              {image}
-            </div>
-          ))}
+        <div className={classes.flexImageContainer} key={uuidv4()}>
+          {thumbnailImage}
+        </div>
       </div>
-      <Viewpf content={item.readContent} />
+      <Viewpf
+        containsVideoContent={containsVideoContent}
+        content={readContent}
+      />
       <hr className={classes.dividerStyle}></hr>
     </div>
   );

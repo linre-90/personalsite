@@ -34,9 +34,9 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
   },
   closebtn: {
     display: "block",
-    marginLeft: "auto",
-    marginRight: 20,
-    marginTop: 20,
+    marginLeft: 20,
+    marginRight: "auto",
+    marginTop: 30,
     backgroundColor: "rgba(0,0,0,0)",
     border: 0,
     cursor: "pointer",
@@ -65,6 +65,40 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     transition: "visibility 1s, opacity 1s",
     zIndex: 31,
   },
+  cookieBanner: {
+    display: "flex",
+    flexWrap: "wrap",
+    border: `1px solid ${theme.highlightColor}`,
+    padding: 10,
+    color: theme.textColor,
+    "& ul": {
+      fontSize: ".75rem",
+    },
+  },
+  cookiebannerItem: {
+    width: "50%",
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+  },
+  videoCookieBannerButton: {
+    display: "block",
+    height: 60,
+    width: 100,
+    backgroundColor: "rgba(16, 211, 42, .5)",
+    borderRadius: 10,
+    border: "3px solid green",
+    color: "black",
+    marginTop: 10,
+    transition: "height .2s, width .2s, background-color .2s",
+  },
+  videoCookieBannerButtonHover: {
+    height: 70,
+    width: 110,
+    cursor: "pointer",
+    transition: "height .2s, width .2s, background-color .2s",
+    backgroundColor: "rgba(16, 211, 42, 1)",
+  },
 }));
 
 /**
@@ -72,13 +106,26 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
  * @param param0
  * @returns
  */
-const Viewpf = ({ children, content }: ViewpfProps): ReactElement => {
+const Viewpf = ({
+  children,
+  content,
+  containsVideoContent,
+}: ViewpfProps): ReactElement => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
   /** Custom content fetching hook. Returns renderable content. */
   const contentd = useContent(content);
   const [visible, setVisible] = useState<boolean>(false);
+  const [videoCookies, setVideoCookies] = useState<boolean>(
+    window.sessionStorage.getItem("videocookie") ? true : false
+  );
+  const cookieButtonRef = useRef<HTMLButtonElement>(null);
+
+  const approveCookies = () => {
+    window.sessionStorage.setItem("videocookie", "ok");
+    setVideoCookies(true);
+  };
 
   useEffect(() => {
     if (visible) {
@@ -88,7 +135,93 @@ const Viewpf = ({ children, content }: ViewpfProps): ReactElement => {
       document.getElementsByTagName("body")[0].style.overflowY = "scroll";
       wrapperRef.current?.classList.remove(classes.readershow);
     }
-  }, [visible, classes.readershow]);
+    cookieButtonRef.current?.addEventListener("mouseenter", () => {
+      cookieButtonRef.current?.classList.add(
+        classes.videoCookieBannerButtonHover
+      );
+    });
+    cookieButtonRef.current?.addEventListener("mouseleave", () => {
+      cookieButtonRef.current?.classList.remove(
+        classes.videoCookieBannerButtonHover
+      );
+    });
+  }, [visible, classes.readershow, classes.videoCookieBannerButtonHover]);
+
+  const getShowButton = () => {
+    if (!containsVideoContent) {
+      return (
+        <button
+          className={classes.readMoreButton}
+          onClick={() => setVisible(true)}
+        >
+          Lue lisää!
+        </button>
+      );
+    } else if (containsVideoContent && videoCookies) {
+      return (
+        <button
+          className={classes.readMoreButton}
+          onClick={() => setVisible(true)}
+        >
+          Lue lisää!
+        </button>
+      );
+    } else {
+      return (
+        <div className={classes.cookieBanner}>
+          <div className={classes.cookiebannerItem}>
+            <div>
+              <h4>Hyväksy evästeet katsoaksesi sisältöä!</h4>
+              <p>
+                Google ja Youtube asettavat sisälletyille videoille evästeitä.
+              </p>
+            </div>
+            <div>
+              <p>
+                Painamalla "Hyväksy evästeet" nappia tallennamme suostumuksesi
+                evästeeseen.
+              </p>
+              <button
+                ref={cookieButtonRef}
+                className={classes.videoCookieBannerButton}
+                type="button"
+                onClick={() => approveCookies()}
+              >
+                Hyväksy evästeet
+              </button>
+            </div>
+          </div>
+          <div className={classes.cookiebannerItem}>
+            <p>
+              <u>Google kerää esimerkiksi seuraavia tietoja:</u>
+            </p>
+            <ul>
+              <li>Hakuhistoria</li>
+              <li>Katsotut videot</li>
+              <li>Näytöt ja mainosten klikkaukset</li>
+              <li>Ääni ja puhe</li>
+              <li>Ostokäyttäytyminen</li>
+              <li>Ihmiset joiden kanssa olet yhteydessä tai jaat sisältöä</li>
+              <li>
+                Käyttäytymistä kolmanneosapuolen sivuilla ja applikaatioissa
+              </li>
+              <li>Chromen selaushistoria (sisäänkirjautuneilla)</li>
+              <li>Laitteen GPS tietoja</li>
+              <li>Ip osoite</li>
+              <li>Aktiviteetit Googlen palveluissa (esimerkiksi haut)</li>
+              <li>
+                Tietoa ympäröivistä wifi verkoista, puhelinmastoista ja
+                bluetooth laitteista
+              </li>
+            </ul>
+            <a href="https://policies.google.com/privacy?hl=en-US">
+              Lue Google tietosuoja seloste tästä
+            </a>
+          </div>
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -114,12 +247,7 @@ const Viewpf = ({ children, content }: ViewpfProps): ReactElement => {
           {children}
         </div>
       </div>
-      <button
-        className={classes.readMoreButton}
-        onClick={() => setVisible(true)}
-      >
-        Read more!
-      </button>
+      {getShowButton()}
     </>
   );
 };

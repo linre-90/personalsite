@@ -5,7 +5,7 @@ import { Dark, Light } from "../theme";
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   backToTopButton: {
     position: "fixed",
-    bottom: 90,
+    bottom: 30,
     right: 30,
     zIndex: 19,
     borderRadius: 25,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./Pages/home";
 import PortfolioPage from "./Pages/portfolio";
@@ -9,17 +9,7 @@ import BacktoTopButton from "./components/backToTop";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
-  const [videoCookie, setVideoCookie] = useState<boolean>(
-    window.sessionStorage.getItem("videocookie") ? true : false
-  );
-  const acceptGoogleCookies = (): void => setVideoCookie(true);
   const location = useLocation();
-
-  useEffect(() => {
-    if (videoCookie) {
-      window.sessionStorage.setItem("videocookie", "ok");
-    }
-  }, [videoCookie]);
 
   return (
     <GlobalStyle>
@@ -33,25 +23,9 @@ function App() {
       <BacktoTopButton></BacktoTopButton>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route
-            path="/portfolio"
-            element={
-              <PortfolioPage
-                acceptFunction={acceptGoogleCookies}
-                videoCookiesOk={videoCookie}
-              />
-            }
-          ></Route>
+          <Route path="/portfolio" element={<PortfolioPage />}></Route>
           <Route path="/yhteys" element={<ContactPage />}></Route>
-          <Route
-            path="*"
-            element={
-              <HomePage
-                videoCookiesOk={videoCookie}
-                acceptFunction={acceptGoogleCookies}
-              />
-            }
-          ></Route>
+          <Route path="*" element={<HomePage />}></Route>
         </Routes>
       </AnimatePresence>
     </GlobalStyle>

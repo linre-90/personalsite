@@ -36,7 +36,7 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
   },
   menuButton: {
     position: "fixed",
-    bottom: 30,
+    top: 30,
     right: 30,
     zIndex: 22,
     borderRadius: 25,

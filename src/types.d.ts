@@ -7,13 +7,15 @@ export interface VideoComponentProps {
   acceptFunction?: Function;
 }
 
-export interface PortfolioItemProps extends VideoComponentProps {
+export interface PortfolioItemProps {
   headline: string;
   description: string;
   usedtech: string[];
-  imageCollection?: JSX.Element[];
-  link?: string;
-  downloadLink?: string;
+  thumbnailImage: JSX.Element;
+  containsVideoContent: boolean;
+  //imageCollection?: JSX.Element[];
+  //link?: string;
+  //downloadLink?: string;
   readContent: ContentSelector;
 }
 
@@ -43,9 +45,5 @@ export interface ImageProps {
 
 export interface ViewpfProps extends ChildrenProps {
   content: ContentSelector;
+  containsVideoContent: boolean;
 }
-
-/** Page component types ***************************************************************/
-export interface HomePageProps extends VideoComponentProps {}
-
-export interface PortfolioPageProps extends VideoComponentProps {}

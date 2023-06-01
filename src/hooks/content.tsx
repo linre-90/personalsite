@@ -14,8 +14,8 @@ const contentList = [
   catsopinion,
   catquiz,
   catvision,
-  virtualLibrary,
   footkin,
+  virtualLibrary,
   raytrace,
 ];
 
