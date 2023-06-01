@@ -4,7 +4,7 @@ import PortfolioItem from "../components/portfolioItem";
 import Image from "../components/image/image";
 import { images } from "../components/image/imageImports";
 import { motion } from "framer-motion";
-import { ContentSelector } from "../enums";
+import { postList } from "../posts/postManager";
 
 /**
  * Renders portfolio listing and reader
@@ -18,11 +18,26 @@ const PortfolioPage = (): ReactElement => {
       transition={{ duration: 0.5 }}
     >
       <PageBase>
+        <h1>Portfolio</h1>
+        <p>Tähän on listattu tekemiäni projekteja.</p>
+        <p>
+          Psssst... "Live" tägillä merkattuja voi kokeilla lataamalla tai
+          selaimella. "Video" tägillä olevista löytyy video!{"  "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            className="bi bi-hand-thumbs-up-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+          </svg>
+        </p>
         <PortfolioItem
-          readContent={ContentSelector.Catsopinion}
-          key={"a1"}
-          headline="Cats Opinion"
-          description="Blogi, jonka aiheena olivat kissat ja niiden salamyhkäinen elämä, oli saatavilla sekä englanniksi että suomeksi, mutta päätimme lopettaa bloggaamisen, koska se vei liikaa aikaa muilta projekteilta."
+          readContent={postList.catsopinion}
+          headline="Cat's Opinion"
+          description="Cat's opinion oli kissa aiheinen blogi johon kuului myös muuta pelattavaa verkkosisältöä."
           usedtech={["Nuxt.js", "Heroku", "Firestore", "AWS"]}
           containsVideoContent={false}
           thumbnailImage={
@@ -33,22 +48,20 @@ const PortfolioPage = (): ReactElement => {
           }
         />
         <PortfolioItem
-          readContent={ContentSelector.Catquiz}
-          key={"a2"}
+          readContent={postList.catquiz}
           headline="Cat Quiz"
-          description="Kysele ja vastaa -peli, joka sai inspiraationsa kissoista, oli täydentävä osa Cats Opinion -blogia tarjoten interaktiivista sisältöä ja viihdykettä."
-          usedtech={["React", "Firebase", "Python"]}
+          description="Catquiz on Reactilla toteutettu, selain pohjainen kysele ja vastaa peli. Peli oli osa Cat's opinion blogin interaktiivista sisältöä."
+          usedtech={["React", "Firebase", "Python", "Live"]}
           containsVideoContent={false}
           thumbnailImage={
             <Image img={images.catquiz} alt="Cats quiz pelin etusivu" />
           }
         />
         <PortfolioItem
-          readContent={ContentSelector.Catvision}
-          key={"a3"}
+          readContent={postList.catvision}
           headline="Cat vision"
-          description="Unitylla toteutettu web-selainpeli, joka havainnollistaa ihmisen ja kissan näkökyvyn eroja. Se oli osa Cats Opinion -blogin interaktiivista sisältöä."
-          usedtech={["Unity", "Firebase"]}
+          description="Unitylla toteutettu web-selainpeli, joka havainnollistaa ihmisen ja kissan näkökyvyn eroja. Cat vision oli osa Cats Opinion -blogin interaktiivista sisältöä."
+          usedtech={["Unity", "Firebase", "Live"]}
           containsVideoContent={false}
           thumbnailImage={
             <Image
@@ -58,11 +71,16 @@ const PortfolioPage = (): ReactElement => {
           }
         />
         <PortfolioItem
-          readContent={ContentSelector.Footkin}
-          key={"a4"}
+          readContent={postList.footkin}
           headline="Footkin's halloween revolution"
           description="Teimme Unitylla yksinkertaisen Halloween-teemaisen pelin. Osallistuin neljän muun henkilön kanssa nelipäiväiseen pelijamitapahtumaan."
-          usedtech={["Unity", "Universal render pipeline", "Gamejam"]}
+          usedtech={[
+            "Unity",
+            "Universal render pipeline",
+            "Gamejam",
+            "Live",
+            "Video",
+          ]}
           containsVideoContent={true}
           thumbnailImage={
             <Image
@@ -72,8 +90,7 @@ const PortfolioPage = (): ReactElement => {
           }
         />
         <PortfolioItem
-          readContent={ContentSelector.VirtualLib}
-          key={"a5"}
+          readContent={postList.virtualLibrary}
           headline="Virtuaalikirjasto"
           description="Teimme koulussa työssäoppimisjakson aikana paikalliselle kirjastolle pelin. Pelissä pelaaja suorittaa possun antamia tehtäviä ja samalla tutustuu kirjaston tarjontaan. Lisäsimme peliin myös toimivia tietokoneita, joilla voi pelata minipelejä."
           usedtech={["Unity"]}
@@ -83,11 +100,10 @@ const PortfolioPage = (): ReactElement => {
           }
         />
         <PortfolioItem
-          readContent={ContentSelector.Raytrace}
-          key={"a6"}
-          headline="Unity raytracing"
-          description="Tehtävänä oli esitellä joko Universal Render Pipeline (URP) -renderöintiä tai High Definition Render Pipeline (HDRP) -renderöintiä. Päätin tehdä HDRP:n avulla linnamaisen kentän, joka hyödyntää Nvidian ray tracing -tekniikkaa ja DLSS-tekniikoita."
-          usedtech={["Unity", "HDRP"]}
+          readContent={postList.raytrace}
+          headline="Unity raytracing, dlss ja DX12"
+          description="Tein pienimuotoisen toteutuksen unityn HDRP renderöinnillä. Scenessä hyödynnetään ray tracing teknologiaa ja raskasta post prosessointia."
+          usedtech={["Unity", "HDRP", "Video"]}
           containsVideoContent={true}
           thumbnailImage={
             <Image img={images.ray} alt="Kuva pelin päävalikosta" />

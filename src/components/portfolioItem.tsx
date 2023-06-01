@@ -6,7 +6,12 @@ import { Dark, Light } from "../theme";
 import Viewpf from "./viewpf";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
-  dividerStyle: { width: "40%", marginLeft: 0, marginTop: 40 },
+  dividerStyle: {
+    border: `1px solid ${theme.complimentaryColor}`,
+    width: "40%",
+    marginLeft: 0,
+    marginTop: 40,
+  },
   techPill: {
     border: "1px solid " + theme.complimentaryColor,
     marginRight: 5,
@@ -21,6 +26,8 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     borderBottom: 0,
     borderLeft: 0,
     padding: 20,
+    display: "flex",
+    flexWrap: "wrap",
   },
   flexImageGridContainer: {
     marginTop: 10,
@@ -65,9 +72,9 @@ const PortfolioItem = ({
       <h3>{headline}</h3>
       <div className={classes.techPilWrapper}>
         {usedtech.map((i) => (
-          <span className={classes.techPill} key={uuidv4()}>
+          <div className={classes.techPill} key={uuidv4()}>
             {i}
-          </span>
+          </div>
         ))}
       </div>
       <p>{description}</p>

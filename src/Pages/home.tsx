@@ -1,10 +1,11 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect } from "react";
 import Headline from "../components/headline";
 import VideoComponent from "../components/videoComponent";
 import PageBase from "../components/pageBase";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 import { motion } from "framer-motion";
+import CookieNotice from "../components/cookieNotice";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   headerColor: {
@@ -18,19 +19,25 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 const HomePage = (): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
+  /*
   const [videoCookie, setVideoCookie] = useState<boolean>(
     window.sessionStorage.getItem("videocookie") ? true : false
   );
   const acceptGoogleCookies = (): void => setVideoCookie(true);
-
-  useEffect(() => {
-    alert(
-      "Hei! Sivuille tehdään päivityksiä. Sivuston toiminta ja sisältö on puutteellista!"
-    );
+*/
+  useEffect(
+    () => {
+      alert(
+        "Hei! Sivuille tehdään päivityksiä. Sivuston toiminta ja sisältö on puutteellista!"
+      ); /*
     if (videoCookie) {
       window.sessionStorage.setItem("videocookie", "ok");
-    }
-  }, [videoCookie]);
+    }*/
+    },
+    [
+      /*videoCookie*/
+    ]
+  );
 
   useEffect(() => {}, []);
 
@@ -72,11 +79,9 @@ const HomePage = (): ReactElement => {
               valoille suosittelen kelaamaan 50 sekunnin kohdalle.
             </i>
           </p>
-          <VideoComponent
-            videoURL="https://www.youtube-nocookie.com/embed/1d8ALlXSVBY"
-            videoCookiesOk={videoCookie}
-            acceptFunction={acceptGoogleCookies}
-          />
+          <CookieNotice>
+            <VideoComponent videoURL="https://www.youtube-nocookie.com/embed/1d8ALlXSVBY" />
+          </CookieNotice>
         </div>
       </PageBase>
     </motion.main>

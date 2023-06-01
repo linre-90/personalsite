@@ -2,9 +2,7 @@ import { ContentSelector } from "./enums";
 
 /** Component types ***************************************************************/
 export interface VideoComponentProps {
-  videoCookiesOk?: boolean | false;
   videoURL?: string;
-  acceptFunction?: Function;
 }
 
 export interface PortfolioItemProps {
@@ -47,3 +45,7 @@ export interface ViewpfProps extends ChildrenProps {
   content: ContentSelector;
   containsVideoContent: boolean;
 }
+
+export interface CookieNoticeProps extends ChildrenProps {}
+
+export interface PostProps extends ChildrenProps {}
