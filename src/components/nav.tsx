@@ -30,6 +30,7 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     transform: "translateX(400px)",
     transition: "transform .5s, opacity .5s, visibility .5s",
     visibility: "hidden",
+    overflowY: "scroll",
   },
   navHeader: {
     color: theme.highlightColor,

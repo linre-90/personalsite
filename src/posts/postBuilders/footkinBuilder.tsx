@@ -2,9 +2,9 @@ import React from "react";
 import Post from "../post";
 import Image from "../../components/image/image";
 import VideoComponent from "../../components/videoComponent";
-import image1 from "../../images/menu.webp";
-import image2 from "../../images/lightDark.webp";
 import file from "../../downloads/FootkinsHalloweenRevolution.zip";
+import { images } from "../../components/image/imageImports";
+
 export const footkin = (
   <Post
     children={
@@ -25,7 +25,7 @@ export const footkin = (
         <div id="spacer"></div>
         <VideoComponent videoURL="https://www.youtube-nocookie.com/embed/AZPaT0EHMCY" />
         <figure>
-          <Image alt="Kuva pelin päävalikosta" img={image1} />
+          <Image alt="Kuva pelin päävalikosta" img={images.footkin} />
           <figcaption>Pelin päävalikko</figcaption>
         </figure>
         <h2>Tekninen toteutus</h2>
@@ -36,7 +36,10 @@ export const footkin = (
           aikaan nähden pelistä tuli yllättävän hyvä.
         </p>
         <figure>
-          <Image alt="Kuva jossa catquiz peli on käynnissä" img={image2} />
+          <Image
+            alt="Kuva footkinista hänen tuhottuaan vihollisen."
+            img={images.footkinLight}
+          />
           <figcaption>
             Mallintajamme teki loistavaa työtä 3d mallien kanssa ja visuaalinen
             ilme on mielestäni todella onnisunut.

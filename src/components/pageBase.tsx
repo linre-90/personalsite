@@ -6,7 +6,7 @@ import Contact from "./contact";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   container: {
-    width: "90%",
+    width: "95%",
     padding: 20,
     margin: 0,
     marginLeft: "auto",

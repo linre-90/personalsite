@@ -2,9 +2,8 @@ import React from "react";
 import Post from "../post";
 import Image from "../../components/image/image";
 import VideoComponent from "../../components/videoComponent";
-import image1 from "../../images/thumbnail.webp";
-import image2 from "../../images/fireplace.webp";
-import image3 from "../../images/hallway.webp";
+import { images } from "../../components/image/imageImports";
+
 export const raytrace = (
   <Post
     children={
@@ -15,13 +14,13 @@ export const raytrace = (
           kohtalaisen raskaan scenen jossa oli paljon kiiltäviä pintoja ja
           heijastuksia. Vfx efekteissä en myöskään säästellyt. Screen space
           reflection moodina oli ray traced. Dlss:llä oli selvä vaikutus
-          näytönohjaimen suorituskykyyn. Video ja peli on nauhoitettu nvidia rtx
+          näytönohjaimen suorituskykyyn. Video ja peli on nauhoitettu Nvidia RTX
           2060 näytönohjaimella.
         </p>
         <div id="spacer"></div>
         <VideoComponent videoURL="https://www.youtube-nocookie.com/embed/iFBjlztOsMU" />
         <figure>
-          <Image alt="Kuva pelin takkahuoneesta" img={image1} />
+          <Image alt="Kuva pelin takkahuoneesta" img={images.ray} />
           <figcaption>Takkahuone</figcaption>
         </figure>
         <h2>Ajatuksia</h2>
@@ -34,7 +33,7 @@ export const raytrace = (
           FPS:än.
         </p>
         <figure>
-          <Image alt="Kuva tulisijasta" img={image2} />
+          <Image alt="Kuva tulisijasta" img={images.rayfireplace} />
           <figcaption>
             Tulisijassa oli monta vfx graphia samaan aikaan. Lisäksi kuvasta voi
             hahmottaa pienen easter egg:in, niitä on aina aikaa laittaa...
@@ -54,11 +53,11 @@ export const raytrace = (
         <figure>
           <Image
             alt="Kuva käytävästä jossa oli partikkeleja ja pieniä animaatioita."
-            img={image3}
+            img={images.rayhall}
           />
           <figcaption>
-            Käytävässä testasin kuinka dlss vaikuttaa pöly partikkeleita ja
-            pieniä animaatioita.
+            Käytävässä testasin kuinka dlss vaikuttaa pöly partikkeleihin ja
+            pieniin animaatioihin.
           </figcaption>
         </figure>
       </>

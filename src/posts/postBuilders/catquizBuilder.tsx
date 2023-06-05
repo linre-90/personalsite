@@ -1,9 +1,8 @@
 import React from "react";
 import Post from "../post";
 import Image from "../../components/image/image";
-import image1 from "../../images/catquiz-index.webp";
-import image2 from "../../images/catquiz-gameplay.webp";
-import image3 from "../../images/catquiz-end.webp";
+import { images } from "../../components/image/imageImports";
+
 export const catquiz = (
   <Post
     children={
@@ -18,7 +17,7 @@ export const catquiz = (
           </a>
         </p>
         <figure>
-          <Image alt="Kuva blogin etusivulta" img={image1} />
+          <Image alt="Kuva pelin etusivulta." img={images.catquiz} />
           <figcaption>Kuva etusivulta.</figcaption>
         </figure>
         <h2>Tekninen toteutus</h2>
@@ -38,13 +37,16 @@ export const catquiz = (
           typescript projektini, joten pyydän armoa koodin sotkuisuuteen.
         </p>
         <figure>
-          <Image alt="Kuva jossa catquiz peli on käynnissä" img={image2} />
+          <Image
+            alt="Kuva jossa catquiz peli on käynnissä"
+            img={images.catquizgame}
+          />
           <figcaption>
             Pelissä kyseltiin vastauksia kissa aiheisiin kysymyksiin.
           </figcaption>
         </figure>
         <figure>
-          <Image alt="Kuva pelin palaute osiosta" img={image3} />
+          <Image alt="Kuva pelin palaute osiosta" img={images.catquizend} />
           <figcaption>
             Pelistä sai aina lopuksi palautteen mikä meni väärin ja mikä oikein.
           </figcaption>

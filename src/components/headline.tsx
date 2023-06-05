@@ -8,15 +8,12 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     flexDirection: "column",
     justifyContent: "flex-end",
     height: "100vh",
+    paddingBottom: 50,
   },
   headlineSpecial: {
     fontSize: "1rem",
-    "& div": {
-      marginTop: 30,
-      marginBottom: 30,
-    },
     "& :last-child": {
-      marginTop: 60,
+      marginTop: 20,
       textAlign: "center",
     },
     "@media only screen and (min-width: 296px)": {
@@ -51,6 +48,8 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     animationFillMode: "forwards",
     animationDuration: 1000,
     visibility: "hidden",
+    marginTop: 5,
+    marginBottom: 5,
   },
   header3: {
     animation: "$slidein",

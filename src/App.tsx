@@ -13,6 +13,16 @@ function App() {
 
   return (
     <GlobalStyle>
+      <div
+        style={{ textAlign: "center", backgroundColor: "red", marginTop: 0 }}
+      >
+        <small>
+          <p style={{ marginTop: 0, padding: "5" }}>
+            Sivuille tehdään päivityksiä, tiedot saattavat olla puutteellisia ja
+            sivuston toiminta epävakaata.
+          </p>
+        </small>
+      </div>
       <Nav
         items={[
           { id: "Etusivu", address: "/" },

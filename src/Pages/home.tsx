@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from "react";
+import React, { ReactElement } from "react";
 import Headline from "../components/headline";
 import VideoComponent from "../components/videoComponent";
 import PageBase from "../components/pageBase";
@@ -19,27 +19,6 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 const HomePage = (): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
-  /*
-  const [videoCookie, setVideoCookie] = useState<boolean>(
-    window.sessionStorage.getItem("videocookie") ? true : false
-  );
-  const acceptGoogleCookies = (): void => setVideoCookie(true);
-*/
-  useEffect(
-    () => {
-      alert(
-        "Hei! Sivuille tehdään päivityksiä. Sivuston toiminta ja sisältö on puutteellista!"
-      ); /*
-    if (videoCookie) {
-      window.sessionStorage.setItem("videocookie", "ok");
-    }*/
-    },
-    [
-      /*videoCookie*/
-    ]
-  );
-
-  useEffect(() => {}, []);
 
   return (
     <motion.main
@@ -53,23 +32,24 @@ const HomePage = (): ReactElement => {
         <div>
           <h2 className={classes.headerColor}>Info</h2>
           <p>
-            Olen Juho, tuleva ohjelmistokehittäjäsi. Koulutukseltani olen
-            ohjelmistokehittäjä, joka on erikoistunut pelialaan. Lisäksi olen
-            tutustunut web-kehityksen ja mobiililaitteiden maailmaan koulutuksen
-            kautta.
+            Hei, olen Juho. Koulutukseltani olen ohjelmistokehittäjä, joka on
+            erikoistunut pelialaan. Lisäksi olen tutustunut web-kehityksen ja
+            mobiililaitteiden maailmaan koulutuksen kautta.
           </p>
           <p>
             Pärjään tällä hetkellä useiden eri tekniikoiden kanssa, mukaan
             lukien WordPress, React, Java ja C#. Suurimmat kiinnostuksen
             kohteeni ovat full stack web-kehitys ja pelien tekeminen.
             Mobiilisovellukset ovat myös mielenkiintoisia, ja olen tehnyt
-            muutaman Android-järjestelmälle.
+            muutaman Android-järjestelmälle. Sovellusten taustapalveluja olen
+            vienyt tuotantoon mm. Amazonin, Herokun ja Googlen Firebase
+            alustoille.
           </p>
           <p>
             Olen valmistunut vuonna 2023 pelialan koulutusohjelmasta. Olen
             hankkinut lisäkoulutusta Helsingin yliopistosta ja XAMK
             ammattikorkeakoulusta. Olen kuitenkin harrastanut ohjelmointia jo
-            ennen koulutukseen hakeutumista, joten minulla on vähintään 5 vuoden
+            ennen koulutukseen hakeutumista, joten minulla on noin 5 vuoden
             kokemus harrastukseni kautta.
           </p>
           <p>

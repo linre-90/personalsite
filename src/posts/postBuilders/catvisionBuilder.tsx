@@ -1,8 +1,8 @@
 import React from "react";
 import Post from "../post";
 import Image from "../../components/image/image";
-import image1 from "../../images/catvision-thumbnail.webp";
-import image2 from "../../images/catvision-difference.webp";
+import { images } from "../../components/image/imageImports";
+
 export const catvision = (
   <Post
     children={
@@ -19,7 +19,7 @@ export const catvision = (
           </a>
         </p>
         <figure>
-          <Image alt="Kuva pelialueesta" img={image1} />
+          <Image alt="Kuva pelialueesta" img={images.catvisiongame} />
           <figcaption>Yleiskuva pelialueesta</figcaption>
         </figure>
         <h2>Tekninen toteutus</h2>
@@ -30,7 +30,10 @@ export const catvision = (
           taiteellisen tyylisuunnan.
         </p>
         <figure>
-          <Image alt="Kuva jossa catquiz peli on käynnissä" img={image2} />
+          <Image
+            alt="Kuva jossa näkyy ero kissan ja ihmisen näkökyvyssä."
+            img={images.catvisionDifference}
+          />
           <figcaption>
             Peli simuloi eroja näkökykyjen välillä hyödyntäen post
             prosessointia.

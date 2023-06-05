@@ -15,6 +15,8 @@ import kirjastowhole from "../../images/whole.webp";
 import ray from "../../images/thumbnail.webp";
 import rayhall from "../../images/hallway.webp";
 import rayfireplace from "../../images/fireplace.webp";
+import koivikkolthumb from "../../images/kl0.webp";
+import koivikkolsec from "../../images/kl1.webp";
 
 export const images = {
   catsopinionblog,
@@ -33,4 +35,6 @@ export const images = {
   ray,
   rayfireplace,
   rayhall,
+  koivikkolthumb,
+  koivikkolsec,
 };

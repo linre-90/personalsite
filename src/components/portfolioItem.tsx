@@ -22,9 +22,6 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     fontSize: ".75rem",
   },
   techPilWrapper: {
-    border: `1px solid ${theme.complimentaryColor}`,
-    borderBottom: 0,
-    borderLeft: 0,
     padding: 20,
     display: "flex",
     flexWrap: "wrap",
@@ -46,8 +43,18 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     },
   },
   itemWrapper: {
-    marginTop: 80,
-    marginBottom: 80,
+    marginTop: 30,
+    marginBottom: 30,
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    border: `1px solid ${theme.complimentaryColor}`,
+    borderBottom: 0,
+    borderLeft: 0,
+    "@media only screen and (min-width: 800px)": {
+      width: "45%",
+    },
   },
 }));
 
@@ -69,25 +76,29 @@ const PortfolioItem = ({
 
   return (
     <div className={classes.itemWrapper}>
-      <h3>{headline}</h3>
-      <div className={classes.techPilWrapper}>
-        {usedtech.map((i) => (
-          <div className={classes.techPill} key={uuidv4()}>
-            {i}
+      <div>
+        <h3>{headline}</h3>
+        <div className={classes.techPilWrapper}>
+          {usedtech.map((i) => (
+            <div className={classes.techPill} key={uuidv4()}>
+              {i}
+            </div>
+          ))}
+        </div>
+        <p>{description}</p>
+        <div className={classes.flexImageGridContainer}>
+          <div className={classes.flexImageContainer} key={uuidv4()}>
+            {thumbnailImage}
           </div>
-        ))}
-      </div>
-      <p>{description}</p>
-      <div className={classes.flexImageGridContainer}>
-        <div className={classes.flexImageContainer} key={uuidv4()}>
-          {thumbnailImage}
         </div>
       </div>
-      <Viewpf
-        containsVideoContent={containsVideoContent}
-        content={readContent}
-      />
-      <hr className={classes.dividerStyle}></hr>
+      <div>
+        <Viewpf
+          containsVideoContent={containsVideoContent}
+          content={readContent}
+        />
+        <hr className={classes.dividerStyle}></hr>
+      </div>
     </div>
   );
 };
