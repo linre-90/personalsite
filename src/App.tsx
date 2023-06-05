@@ -7,6 +7,7 @@ import GlobalStyle from "./components/globalStyle";
 import Nav from "./components/nav";
 import BacktoTopButton from "./components/backToTop";
 import { AnimatePresence } from "framer-motion";
+import { CookieContextProvider } from "./context/CookieContext";
 
 function App() {
   const location = useLocation();
@@ -32,11 +33,13 @@ function App() {
       ></Nav>
       <BacktoTopButton></BacktoTopButton>
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/portfolio" element={<PortfolioPage />}></Route>
-          <Route path="/yhteys" element={<ContactPage />}></Route>
-          <Route path="*" element={<HomePage />}></Route>
-        </Routes>
+        <CookieContextProvider>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/portfolio" element={<PortfolioPage />}></Route>
+            <Route path="/yhteys" element={<ContactPage />}></Route>
+            <Route path="*" element={<HomePage />}></Route>
+          </Routes>
+        </CookieContextProvider>
       </AnimatePresence>
     </GlobalStyle>
   );

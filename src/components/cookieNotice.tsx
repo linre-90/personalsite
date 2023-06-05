@@ -1,7 +1,8 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { ReactElement, useEffect, useRef, useContext } from "react";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 import { CookieNoticeProps } from "../types";
+import { CookieContext } from "../context/CookieContext";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   cookieBanner: {
@@ -53,16 +54,8 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
 const CookieNotice = ({ children }: CookieNoticeProps): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
-  const [cookieOk, setCookieOk] = useState<boolean>(
-    window.sessionStorage.getItem("videocookie") ? true : false
-  );
-
+  const { cookieAccepted, acceptCookies } = useContext(CookieContext);
   const cookieButtonRef = useRef<HTMLButtonElement>(null);
-
-  const approveCookies = () => {
-    window.sessionStorage.setItem("videocookie", "ok");
-    setCookieOk(true);
-  };
 
   useEffect(() => {
     cookieButtonRef.current?.addEventListener("mouseenter", () => {
@@ -76,9 +69,9 @@ const CookieNotice = ({ children }: CookieNoticeProps): ReactElement => {
       );
     });
   }, [classes.videoCookieBannerButtonHover]);
-  if (!cookieOk) {
-    return (
-      <>
+  return (
+    <>
+      {!cookieAccepted && (
         <div className={classes.cookieBanner}>
           <div className={classes.cookiebannerItem}>
             <div>
@@ -97,7 +90,7 @@ const CookieNotice = ({ children }: CookieNoticeProps): ReactElement => {
                 ref={cookieButtonRef}
                 className={classes.videoCookieBannerButton}
                 type="button"
-                onClick={() => approveCookies()}
+                onClick={() => acceptCookies()}
               >
                 Hyväksy evästeet
               </button>
@@ -129,11 +122,10 @@ const CookieNotice = ({ children }: CookieNoticeProps): ReactElement => {
             </a>
           </div>
         </div>
-      </>
-    );
-  } else {
-    return <>{children}</>;
-  }
+      )}
+      {cookieAccepted && <>{children}</>}
+    </>
+  );
 };
 
 export default CookieNotice;

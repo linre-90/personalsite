@@ -112,12 +112,14 @@ const Viewpf = ({
     } else {
       return (
         <CookieNotice>
-          <button
-            className={classes.readMoreButton}
-            onClick={() => setVisible(true)}
-          >
-            Lue lisää!
-          </button>
+          {
+            <button
+              className={classes.readMoreButton}
+              onClick={() => setVisible(true)}
+            >
+              Lue lisää!
+            </button>
+          }
         </CookieNotice>
       );
     }

@@ -49,3 +49,8 @@ export interface ViewpfProps extends ChildrenProps {
 export interface CookieNoticeProps extends ChildrenProps {}
 
 export interface PostProps extends ChildrenProps {}
+
+export interface CookieContextType {
+  cookieAccepted: boolean;
+  acceptCookies: Function;
+}
