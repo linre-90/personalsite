@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useRef } from "react";
-import { ThemeProvider, createUseStyles, useTheme } from "react-jss";
+import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
