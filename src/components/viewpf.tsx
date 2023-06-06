@@ -1,8 +1,15 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 import { ViewpfProps } from "../types";
 import CookieNotice from "./cookieNotice";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
   viewpfcontainer: {
@@ -88,16 +95,24 @@ const Viewpf = ({
   const classes = useStyles({ theme });
   /** Custom content fetching hook. Returns renderable content. */
   const [visible, setVisible] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const backButtonActionOverwrite = useCallback(() => {
+    navigate("/portfolio");
+    window.removeEventListener("popstate", backButtonActionOverwrite, true);
+  }, [navigate]);
 
   useEffect(() => {
     if (visible) {
       document.getElementsByTagName("body")[0].style.overflowY = "hidden";
       wrapperRef.current?.classList.add(classes.readershow);
+      window.addEventListener("popstate", backButtonActionOverwrite, true);
     } else {
       document.getElementsByTagName("body")[0].style.overflowY = "scroll";
       wrapperRef.current?.classList.remove(classes.readershow);
+      window.removeEventListener("popstate", backButtonActionOverwrite, true);
     }
-  }, [visible, classes.readershow]);
+  }, [visible, classes.readershow, backButtonActionOverwrite]);
 
   const getShowButton = () => {
     if (!containsVideoContent) {
