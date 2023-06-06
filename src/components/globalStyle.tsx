@@ -17,6 +17,7 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     },
     "p, span, a": {
       color: theme.textColor,
+      lineHeight: "1.5rem",
     },
     ul: {
       listStyle: "none",

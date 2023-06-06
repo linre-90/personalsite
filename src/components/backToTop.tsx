@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { createUseStyles, useTheme } from "react-jss";
+import React, { ReactElement, useEffect, useRef } from "react";
+import { ThemeProvider, createUseStyles, useTheme } from "react-jss";
 import { Dark, Light } from "../theme";
 
 const useStyles = createUseStyles((theme: Dark | Light) => ({
@@ -13,23 +13,46 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     height: 50,
     border: "none",
     cursor: "pointer",
+    backgroundColor: theme.secondaryColor,
+    color: theme.highlightColor,
+    boxShadow: "0 0 5px 3px " + theme.highlightColor,
+    transition: "box-shadow .2s",
+  },
+  extraShadow: {
+    boxShadow: "0 0 10px 6px " + theme.highlightColor,
+    transition: "box-shadow .2s",
   },
 }));
 
 const BacktoTopButton = (): ReactElement => {
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
+  const button = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const onMouseEnterStyle = () => {
+      button.current?.classList.add(classes.extraShadow);
+    };
+
+    const onMouseLeaveStyle = () => {
+      button.current?.classList.remove(classes.extraShadow);
+    };
+    button.current?.addEventListener("mouseenter", onMouseEnterStyle);
+    button.current?.addEventListener("mouseleave", onMouseLeaveStyle);
+  }, [classes.extraShadow]);
+
   return (
     <>
       <button
+        ref={button}
         className={classes.backToTopButton}
         onClick={() => window.scrollTo({ behavior: "smooth", left: 0, top: 0 })}
         aria-label="Palaa takaisin ylös"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="22"
+          height="22"
           fill="currentColor"
           className="bi bi-arrow-bar-up"
           viewBox="0 0 16 16"

@@ -15,12 +15,12 @@ export interface fontTheme {
 export class Dark implements colorTheme, fontTheme {
   textFont = "'Raleway', sans-serif;";
   headerFont = "'Major Mono Display', monospace;";
-  mainColor = "#1B2430";
-  secondaryColor = "#51557E";
-  complimentaryColor = "#816797";
+  mainColor = "#13005A";
+  secondaryColor = "#00337C";
+  complimentaryColor = "#1C82AD";
   textColor = "#f8f8f8";
   linkColor = "#f8f8f8";
-  highlightColor = "#D6D5A8";
+  highlightColor = "#03C988";
 }
 
 export class Light implements colorTheme, fontTheme {

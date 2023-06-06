@@ -29,6 +29,9 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
   specialColorHeader: {
     color: theme.highlightColor,
   },
+  complimentaryHeader: {
+    color: theme.complimentaryColor,
+  },
   divider: {
     width: "100%",
   },
@@ -66,6 +69,7 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     animation: "$arrow",
     animationDuration: 1000,
     animationIterationCount: "infinite",
+    color: theme.highlightColor,
   },
   "@keyframes slideupwards": {
     from: { transform: "translateY(400px)", opacity: 0 },
@@ -88,7 +92,7 @@ const Headline = (): ReactElement => {
     <div className={classes.headlineWrapper}>
       <h1 className={classes.headlineSpecial}>
         <div className={classes.header1}>Etsitkö</div>
-        <div className={classes.header2}>
+        <div className={classes.header2 + " " + classes.complimentaryHeader}>
           <u>seuraavaa</u>
         </div>
         <div className={classes.header3 + " " + classes.specialColorHeader}>

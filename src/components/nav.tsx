@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useRef } from "react";
+import React, { ReactElement, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavProps } from "../types";
 import Contact from "./contact";
@@ -15,8 +15,8 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     padding: "2em",
     height: "100%",
     right: 0,
-    border: "1px solid " + theme.secondaryColor,
-    boxShadow: "-1px -1px 5px 2px " + theme.secondaryColor,
+    border: "1px solid " + theme.complimentaryColor,
+    boxShadow: "-1px -1px 5px 2px " + theme.complimentaryColor,
     borderRadius: "20px 0px 0px 0px",
     opacity: 0,
     width: "90%",
@@ -47,6 +47,13 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     cursor: "pointer",
     transform: "rotate(0deg)",
     transition: "transform .5s",
+    backgroundColor: theme.secondaryColor,
+    color: theme.highlightColor,
+    boxShadow: "0 0 5px 3px " + theme.highlightColor,
+  },
+  extraShadow: {
+    boxShadow: "0 0 10px 6px " + theme.highlightColor,
+    transition: "box-shadow .2s",
   },
   navButton: {
     backgroundColor: "rgba(1,1,1,0)",
@@ -76,6 +83,18 @@ const Nav = (props: { items: NavProps[] }): ReactElement => {
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const theme = useTheme<Dark | Light>();
   const classes = useStyles({ theme });
+
+  useEffect(() => {
+    const onMouseEnterStyle = () => {
+      openButtonRef.current?.classList.add(classes.extraShadow);
+    };
+
+    const onMouseLeaveStyle = () => {
+      openButtonRef.current?.classList.remove(classes.extraShadow);
+    };
+    openButtonRef.current?.addEventListener("mouseenter", onMouseEnterStyle);
+    openButtonRef.current?.addEventListener("mouseleave", onMouseLeaveStyle);
+  }, [classes.extraShadow]);
 
   return (
     <nav>
@@ -113,8 +132,8 @@ const Nav = (props: { items: NavProps[] }): ReactElement => {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="22"
+          height="22"
           fill="currentColor"
           className="bi bi-list"
           viewBox="0 0 16 16"

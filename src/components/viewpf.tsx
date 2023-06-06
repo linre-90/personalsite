@@ -39,6 +39,11 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     right: 0,
     backgroundColor: "rgba(0,0,0,0.5)",
   },
+  "@keyframes closebtnanim": {
+    "0%": { transform: "scale(0.95)", filter: "saturate(1)" },
+    "75%": { transform: "scale(1)", filter: "saturate(1.5)" },
+    "100%": { transform: "scale(0.95)", filter: "saturate(1)" },
+  },
   closebtn: {
     display: "block",
     marginLeft: 20,
@@ -51,6 +56,9 @@ const useStyles = createUseStyles((theme: Dark | Light) => ({
     "@media only screen and (min-width: 1200px)": {
       marginRight: 50,
     },
+    animation: "$closebtnanim",
+    animationDuration: 1000,
+    animationIterationCount: "infinite",
   },
   readMoreButton: {
     backgroundColor: "rgba(0,0,0,0)",
@@ -163,22 +171,37 @@ const Viewpf = ({
           <div className={classes.contentStyling}>
             {content}
             {children}
-            <p className={classes.contentCR}>
-              <small>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-c-circle-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503Z" />
-                </svg>{" "}
-                Juho Lindemark 2023
-              </small>
-            </p>
           </div>
+          <button
+            onClick={() => setVisible(false)}
+            className={classes.closebtn}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              fill="currentColor"
+              className="bi bi-x-lg"
+              viewBox="0 0 16 16"
+            >
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+            </svg>
+          </button>
+          <p className={classes.contentCR}>
+            <small>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-c-circle-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503Z" />
+              </svg>{" "}
+              Juho Lindemark 2023
+            </small>
+          </p>
         </div>
       </div>
       {getShowButton()}
