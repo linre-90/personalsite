@@ -6,6 +6,7 @@ import { footkin } from "./postBuilders/footkinBuilder";
 import { virtualLibrary } from "./postBuilders/virtualLibraryBuilder";
 import { raytrace } from "./postBuilders/raytracingBuilder";
 import { koivikkolisala } from "./postBuilders/koivikkolisala";
+import { vr } from "./postBuilders/vr";
 
 /** Object of all available posts */
 export const postList = {
@@ -16,4 +17,5 @@ export const postList = {
   virtualLibrary,
   raytrace,
   koivikkolisala,
+  vr,
 };

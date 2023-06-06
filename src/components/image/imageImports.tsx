@@ -17,6 +17,7 @@ import rayhall from "../../images/hallway.webp";
 import rayfireplace from "../../images/fireplace.webp";
 import koivikkolthumb from "../../images/kl0.webp";
 import koivikkolsec from "../../images/kl1.webp";
+import vrthumb from "../../images/vrthumb.webp";
 
 export const images = {
   catsopinionblog,
@@ -37,4 +38,5 @@ export const images = {
   rayhall,
   koivikkolthumb,
   koivikkolsec,
+  vrthumb,
 };

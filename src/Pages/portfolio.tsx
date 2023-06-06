@@ -60,6 +60,16 @@ const PortfolioPage = (): ReactElement => {
             }
           />
           <PortfolioItem
+            readContent={postList.vr}
+            headline="KekwVR"
+            description="Vr peli/simulaattori esittely ja messu käyttöön."
+            usedtech={["Unity", "URP", "VR"]}
+            containsVideoContent={true}
+            thumbnailImage={
+              <Image img={images.vrthumb} alt="Kuvakaappaus vr pelistä" />
+            }
+          />
+          <PortfolioItem
             readContent={postList.catsopinion}
             headline="Cat's Opinion"
             description="Cat's opinion oli kissa aiheinen blogi johon kuului myös muuta pelattavaa verkkosisältöä."
