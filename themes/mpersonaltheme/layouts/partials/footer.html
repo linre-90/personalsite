@@ -1,0 +1,26 @@
+<div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center p-10">
+        <div>
+            <p class="underline text-2xl underline-offset-4 mb-5 font-ubuntu">Sitemap</p>
+            {{- range site.Menus.sitemap }}
+                <div class="px-5 text-center block m-3">
+                    <a href="{{.PageRef}}">{{.Name}}</a>
+                </div>
+            {{- end}}
+        </div>
+        <div>
+            <p class="underline text-2xl underline-offset-4 mb-5 font-ubuntu">Social</p>
+            {{- range site.Menus.social }}
+            <div class="px-5 text-center block m-3">
+                <a href="{{.URL}}">{{.Name}}</a>
+            </div>
+            {{- end}}
+        </div>
+    </div>
+    <div class="bg-primary py-1">
+        <div class="flex justify-center mt-3">
+            <img src="/favicon-32x32.png" alt="Logo" width="32" height="32"></img>
+        </div>
+        <p class="px-5 text-center text-agressive">Created by Juho Lindemark 2024</p>
+    </div>
+</div>

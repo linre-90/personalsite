@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("/Ubuntu-Regular.ttf");
+}
+
+#single-post-content a{
+    font-size: 1.3rem;
+    text-decoration: underline;
+    font-weight: bold;
+    color: #27374D;
+    opacity: 80%;
+    margin-top: 5px;
+    display: block;
+    width: fit-content;
+}
+
+#single-post-content h1{
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #27374D;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#single-post-content h2{
+    font-size: 1.65rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #27374D;
+}
+
+#single-post-content ul{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    list-style: disc;
+    padding-left: 40px;
+}
+
+#single-post-content p{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    letter-spacing: .025rem;
+    font-size: large;
+    letter-spacing: normal; 
+}
+
+#single-post-content img{
+    width: 100%;
+    max-height: 500px;
+    object-fit: scale-down;
+    margin: auto;
+}
+
+#single-post-content blockquote{
+   font-style: italic;
+   text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+    #single-post-content {
+        padding-left: 100px;
+        padding-right: 100px;
+    } 
+}
+
+@media only screen and (min-width: 950px) {
+    #single-post-content blockquote img{
+        width: 50%;
+        max-height: 500px;
+        object-fit: scale-down;
+    }  
+}

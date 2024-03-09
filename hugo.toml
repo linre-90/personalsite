@@ -1,0 +1,46 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "Portfolio - Juho Lindemark"
+Theme = "mpersonaltheme"
+
+[menus]
+[[menus.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 10
+[[menus.main]]
+    name = "Portfolio"
+    pageRef = "/portfolio"
+    weight = 20
+[[menus.main]]
+    name = "Contact"
+    pageRef = "/contact"
+    weight = 30
+[[menus.sitemap]]
+    name = "Home"
+    pageRef = "/"
+    weight = 10
+[[menus.sitemap]]
+    name = "Portfolio"
+    pageRef = "/portfolio"
+    weight = 20
+[[menus.sitemap]]
+    name = "Contact"
+    pageRef = "/contact"
+    weight = 30
+[[menus.sitemap]]
+    name = "Privacy policy"
+    pageRef = "/privacypolicy"
+    weight = 40
+[[menus.social]]
+    name = "Github"
+    url = "https://github.com/linre-90"
+    weight = 20
+[[menus.social]]
+    name = "Xitter"
+    url = "https://twitter.com/90_linre"
+    weight = 30
+[[menus.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/juho-lindemark-171a98233"
+    weight = 40
