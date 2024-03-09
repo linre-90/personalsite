@@ -11,6 +11,3 @@ hugo.linux
 
 # Temporary lock file while building
 /.hugo_build.lock
-
-# Node theme stuff
-node_modules
