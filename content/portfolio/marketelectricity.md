@@ -6,8 +6,7 @@ thumbnail: "methumb.webp"
 tech: 
     - "C"
     - "Cmake"
-date: 2024-03-10
-weight: 20
+date: 2024-03-10T12:00:00+02:00
 draft: false
 ---
 

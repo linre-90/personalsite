@@ -5,8 +5,7 @@ excerpt: "WIC (WebP Image Converter) is an application written in Python that co
 thumbnail: "wic3.webp"
 tech: 
     - "Python"
-date: 2024-03-10
-weight: 30
+date: 2024-01-10T12:00:00+02:00
 draft: false
 ---
 
