@@ -2,6 +2,7 @@ baseURL = "https://jlind.xyz/"
 languageCode = "en-us"
 title = "Portfolio - Juho Lindemark"
 Theme = "mpersonaltheme"
+disableKinds = ["taxonomy"]
 
 [menus]
 [[menus.main]]

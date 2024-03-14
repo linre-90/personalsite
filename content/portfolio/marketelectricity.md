@@ -2,7 +2,7 @@
 title: "Market electricity"
 name: "marketelectricity"
 excerpt: "The Market Electricity application is programmed entirely in C. It retrieves new hourly price information from an open API. The response from the API is in JSON format, which is then p..."
-thumbnail: "methumb.webp"
+thumbnail: "marketelectricity/methumb.webp"
 tech: 
     - "C"
     - "Cmake"
@@ -19,8 +19,7 @@ The Market Electricity application is programmed entirely in C. It retrieves new
 [Repository is in github!](https://github.com/linre-90/marketElectricity)
 
 > Interface is dead simple
-![User interface](/content/images/methumb.webp "User interface.")
-
+{{<assetimage imgAsset="marketelectricity/methumb.webp" imgAlt="User interface." imgTitle="User interface.">}}
 
 ## Technology
 The Market Electricity application is developed entirely in C for the Windows platform. It is compiled using Visual Studio and CMake. CMake is responsible for managing dependencies for the project, which include CURL for fetching data from the internet and Raylib for generating the graphical user interface (GUI).

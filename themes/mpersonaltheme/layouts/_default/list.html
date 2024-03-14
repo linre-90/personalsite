@@ -9,8 +9,8 @@
                 >
                     <div class="mb-3">
                         {{/* Build thumbnail image url */}}
-                        {{$thumbnail := printf "/%s/%s" .Params.Name .Params.Thumbnail}}
-                        <img class="mx-auto max-h-52 object-scale-down" src="{{ $thumbnail }}" alt="{{.Params.Name}} thumbnail" width="350" height="350"/>
+                        {{ $imagepath := resources.Get .Params.Thumbnail }}
+                        <img class="mx-auto max-h-52 object-scale-down" src="{{ $imagepath.RelPermalink }}" alt="{{.Params.Name}} thumbnail" width="350" height="350"/>
                     </div>
                     <div>
                         {{/* Card Header */}}

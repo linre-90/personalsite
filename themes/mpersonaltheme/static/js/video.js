@@ -23,8 +23,9 @@ class VideoLink extends HTMLElement{
 
         if(this.hasAttribute("imgUrl")){
             imageLink = this.getAttribute("imgUrl");
+            
         }
-
+        
         wrapper.innerHTML = 
         `
             <a class="video-link-link" href="${videoLink}" target="_blank">

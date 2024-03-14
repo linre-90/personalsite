@@ -2,7 +2,7 @@
 title: "Catquiz"
 name: "catquiz"
 excerpt: "Catquiz is an interactive addition to the catsopinion blog...."
-thumbnail: "catquizindex.webp"
+thumbnail: "catquiz/catquizindex.webp"
 tech: 
     - "React"
     - "Typescript"
@@ -24,7 +24,7 @@ Catquiz is an interactive addition to the catsopinion blog.
 [Try the game here!](https://catquiz-843f1.web.app/)
 
 > Frontpage
-![Image from the catquiz front page](/content/images/catquizindex.webp "Image from the catquiz front page")
+{{<assetimage imgAsset="/catquiz/catquizindex.webp" imgAlt="Image from the catquiz front page" imgTitle="Image from the catquiz front page">}}
 
 ## Technical implementation
 
@@ -35,9 +35,9 @@ I've stored the Catquiz questions in Firebase's Realtime Database. The questions
 
 The front-end was built using React and Typescript, with styles authored in plain CSS. It was my first project with Typescript.
 
-> Catquiz is a typecal question/answer game
-![Game running](/content/images/catquizgameplay.webp "Game running")
+> Catquiz is a typical question/answer game
+{{<assetimage imgAsset="/catquiz/catquizgameplay.webp" imgAlt="Game running" imgTitle="Game running">}}
 
 >Questions were based on scientific studies and players receive feedback about their answers with some additional information
-![Feedback screen](/content/images/catquizend.webp "Feedback screen")
+{{<assetimage imgAsset="/catquiz/catquizend.webp" imgAlt="Feedback screen" imgTitle="Feedback screen">}}
 
