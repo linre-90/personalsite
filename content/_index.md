@@ -2,15 +2,21 @@
 title: "Home"
 date: 2024-03-10
 draft: false
-videocvlink: "https://www.youtube.com/watch?v=1d8ALlXSVBY"
-videocvthumb: "cvThumb.webp"
 ---
 
-Hi, I'm Juho. I'm a software developer specializing in the gaming industry. Additionally, I've explored the world of web development and mobile devices through education and
-various types of projects. Currently, I'm proficient with various technologies, including React, Java, and C#. I also know relational and object databases like MongoDb and MySQL.
+I'm Juho, deeply passionate about full-stack web development, game programming, and embedded/electronics projects. While my embedded experience largely stems from Arduino/Raspberry experimentation in my free time, I'm eager to delve further into this realm.
 \
 \
-My main areas of interest are full-stack web development and game development. Mobile applications also pique my interest,
-and I've created a few for the Android platform. I've deployed backend services for applications on platforms like Amazon, Heroku, and Google Firebase. 
-I graduated from a game development program in 2023 and have received additional education from the University of Helsinki and XAMK University of
-Applied Sciences. However, I've been passionate about programming even before pursuing formal education, so I have approximately 5 years of experience through my hobby.
+I hold a degree in game development, and I've recently been expanding my skill set through open education from the University of Applied Sciences and specialized university courses. This diverse background not only enhances my technical proficiency but also equips me with the ability to effectively collaborate with clients, understanding their needs and tailoring solutions to fit their unique use cases.
+\
+\
+Proficient in coding with C# and C-family languages, I've also ventured into projects involving languages like Go and Python. My expertise extends to full-stack web development, where I'm adept at utilizing popular frameworks such as React and Express. While I have experience with MongoDB, both in cloud and local environments, I personally lean towards SQL databases.
+\
+\
+Beyond my IT endeavors, I bring valuable experience from sectors such as logistics and the metal industry. Moreover, my background as a electrician adds another dimension to my skill set, amplifying my capabilities across various domains.
+\
+\
+I'm a calm and composed individual who thrives on encountering new challenges and resolving problems. I'm deeply passionate about continuous learning, constantly updating my existing skills and embracing new ones.
+\
+\
+As of 2024, during my spare time, I'm engaged in a couple of projects. Firstly, I'm developing a single-player game using Unity. The game aims to provide a Battle Royale-like experience without the pressure of competing against other players. Secondly, I'm working on an Arduino-based "smart" fridge application. This project involves monitoring temperature variations and door movements. It's not intended to be a real-world device; instead, it serves as a platform for me to explore and learn new concepts and technologies.
