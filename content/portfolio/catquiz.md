@@ -21,7 +21,6 @@ Catquiz is an interactive addition to the catsopinion blog.
 - Firebase
 - Python
 
-[Try the game here!](https://catquiz-843f1.web.app/)
 
 > Frontpage
 {{<assetimage imgAsset="/catquiz/catquizindex.webp" imgAlt="Image from the catquiz front page" imgTitle="Image from the catquiz front page">}}

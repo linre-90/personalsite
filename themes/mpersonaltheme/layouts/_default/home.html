@@ -1,25 +1,15 @@
 {{ define "main" }}
-<div class="flex justify-center">
-<pre class="bg-white font-normal text-sm md:text-lg my-20">
-<code class="font-ubuntu tracking-wide text-xl">
-<span style="color: #27374D;">int</span> <span style="color: darkgoldenrod;">main</span>(){
-        <span style="color: #526D82;">Software</span> sftw <span style="color: #526D82;">=</span> Software();
-        sftw.howToBuild <span style="color: #526D82;">=</span> <span style="color: #27374D;">"With passion"</span>;
-        std::cout <span style="color: #526D82;"><<</span> sftw.howToBuild;
-}
-</code>
-</pre>
-</div>
 
 <div class="bg-secondary pt-8 pb-8 text-neutral">
     <div class="grid grid-cols-6">
         <div class="col-span-6 lg:col-span-2 text-center">
             <div class="hidden md:block">
-                <script async type="module"
-                    src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
                 <model-viewer class="w-3/4 mx-auto h-screen" camera-controls touch-action="pan-y"
                     alt="A 3D model of a old computer" src="/pc.glb">
                 </model-viewer>
+                <script async type="module"
+                src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
             </div>
         </div>
         <div class="col-span-6 lg:col-span-4 flex flex-col justify-center ">

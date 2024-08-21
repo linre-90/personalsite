@@ -16,7 +16,4 @@ Proficient in coding with C# and C-family languages, I've also ventured into pro
 Beyond my IT endeavors, I bring valuable experience from sectors such as logistics and the metal industry. Moreover, my background as a electrician adds another dimension to my skill set, amplifying my capabilities across various domains.
 \
 \
-I'm a calm and composed individual who thrives on encountering new challenges and resolving problems. I'm deeply passionate about continuous learning, constantly updating my existing skills and embracing new ones.
-\
-\
-As of 2024, during my spare time, I'm engaged in a couple of projects. Firstly, I'm developing a single-player game using Unity. Secondly, I'm working on an Arduino-based "smart" fridge application. This project involves monitoring temperature variations and door movements. It's not intended to be a real-world device; instead, it serves as a platform for me to explore and learn new concepts and technologies.
+I'm a individual who thrives on encountering new challenges and resolving problems. I'm deeply passionate about continuous learning, constantly updating my existing skills and embracing new ones.
